@@ -219,11 +219,11 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
 
   <!-- HISTÓRIA -->
   <section id="processo" ref="{{setSec}}" style="position: relative; height: 16500px">
-    <div id="topo" ref="{{setStick}}" style="position: sticky; top: 61px; height: min(calc(100vh - 61px), 900px); min-height: 580px; overflow: hidden; background: #0C0B0B">
+    <div id="topo" ref="{{setStick}}" style="position: sticky; top: 61px; height: min(calc(100vh - 61px), 900px); min-height: 380px; overflow: hidden; background: #0C0B0B">
 
       <!-- ===== 01 FORNECEDOR: radar ===== -->
       <div style="position: absolute; inset: 0; opacity: {{c1}}; background: #0C0B0B">
-        <div class="v-radar" style="position: absolute; right: -4%; top: 52%; width: min(64vw, 860px); aspect-ratio: 1 / 1; transform: translateY(-50%) perspective(1500px) rotateX(56deg) rotateZ(-18deg)">
+        <div class="v-radar" style="position: absolute; right: -4%; top: 52%; width: min(64vw, 860px, 140vh); aspect-ratio: 1 / 1; transform: translateY(-50%) perspective(1500px) rotateX(56deg) rotateZ(-18deg)">
           <svg viewBox="0 0 1000 1000" role="img" aria-label="Radar de busca de fornecedores na China" style="width: 100%; height: 100%; display: block; overflow: visible">
             <circle cx="500" cy="500" r="470" fill="#141212" stroke="#3A2A2A" stroke-width="2"></circle>
             <circle cx="500" cy="500" r="350" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="2"></circle>
@@ -248,12 +248,12 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
         <!-- hero -->
         <div class="sctext" style="position: absolute; left: 28px; top: 9%; max-width: 760px; opacity: {{heroOp}}; transform: translateY({{heroY}}px)">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">ASSESSORIA PARA IMPORTAÇÃO DA CHINA</div>
-          <h1 style="margin: 18px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(56px, 8.4vw, 136px); line-height: 0.86; letter-spacing: -0.01em; text-transform: uppercase">Da fábrica na China<br>até a <span style="color: #E2202B">sua empresa.</span></h1>
+          <h1 style="margin: 18px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(40px, min(8.4vw, 12.5vh), 136px); line-height: 0.86; letter-spacing: -0.01em; text-transform: uppercase">Da fábrica na China<br>até a <span style="color: #E2202B">sua empresa.</span></h1>
           <p style="margin: 24px 0 0; max-width: 470px; font-size: 17px; line-height: 1.5; color: #C9C5BE">A UP China cuida de cada etapa da sua importação. Role a página e veja o caminho da sua carga.</p>
         </div>
         <div class="sctext" style="position: absolute; left: 28px; top: 14%; max-width: 460px; opacity: {{s1TextOp}}">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">01 — FORNECEDOR</div>
-          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s1Title}}</h2>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(32px, min(5.4vw, 8.6vh), 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s1Title}}</h2>
           <p style="margin: 18px 0 0; font-size: 16px; line-height: 1.5; color: #C9C5BE">Pesquisamos, comparamos e negociamos com fabricantes chineses até chegar no parceiro certo para o seu produto.</p>
           <div style="display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap">
             <sc-for list="{{s1steps}}" as="s" hint-placeholder-count="3">
@@ -265,7 +265,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
 
       <!-- ===== 02 FÁBRICA ===== -->
       <div style="position: absolute; inset: 0; opacity: {{c2}}; background: #ECEAE5; color: #0C0B0B; pointer-events: none">
-        <svg viewBox="0 0 900 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Fábrica sendo inspecionada" class="v-fact" style="position: absolute; right: 2%; bottom: 10%; width: min(64vw, 900px); overflow: visible">
+        <svg viewBox="0 0 900 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Fábrica sendo inspecionada" class="v-fact" style="position: absolute; right: 2%; bottom: 10%; width: min(64vw, 900px, 105vh); overflow: visible">
           <polygon points="60,290 441,510 631,400 250,180" fill="#000000" opacity="0.35" filter="url(#up-blur10)" transform="translate(18 18)"></polygon>
           <g transform="matrix(0.866 0.5 0 1 40 280)">
             <rect x="0" y="-110" width="440" height="110" fill="url(#up-wall)"></rect>
@@ -312,7 +312,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
         </svg>
         <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 440px">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #8E0E14">02 — FÁBRICA</div>
-          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s2Title}}</h2>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(32px, min(5.4vw, 8.6vh), 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s2Title}}</h2>
           <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.5; color: #3B3934">Nosso time visita a fábrica pessoalmente antes de você fechar negócio.</p>
           <ul style="list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
             <sc-for list="{{checks}}" as="c" hint-placeholder-count="4">
@@ -331,18 +331,88 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
 
         <!-- 3a: coleta na fábrica (vista lateral) -->
         <div style="position: absolute; inset: 0; opacity: {{emA}}">
-          <svg class="v-emb" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Empilhadeira de containers colocando o container UP China no caminhão, na fábrica" style="position: absolute; left: 0; right: 0; bottom: 7%; width: 100%; height: 50%; overflow: visible">
+          <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 13.7%; background: #2A2826; border-top: 3px solid #0C0B0B"></div>
+          <svg class="v-emb" viewBox="-260 0 1800 600" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Empilhadeira de containers colocando o container UP China no caminhão, na fábrica" style="position: absolute; left: 0; right: 0; bottom: 7%; width: 100%; height: 50%; overflow: visible">
             <rect x="-400" y="520" width="2400" height="200" fill="#2A2826"></rect>
             <rect x="-400" y="520" width="2400" height="6" fill="#0C0B0B"></rect>
-            <g opacity="0.95">
-              <rect x="-60" y="250" width="420" height="270" fill="url(#up-wall)"></rect>
-              <path d="M-60 250 L-10 190 L-10 250 L40 190 L40 250 L90 190 L90 250 L140 190 L140 250 L190 190 L190 250 L240 190 L240 250 L290 190 L290 250 L340 190 L340 250 L360 250 L360 250 Z" fill="#C7C5BF" stroke="#8A8882"></path>
-              <rect x="20" y="380" width="120" height="140" fill="#3A3A38"></rect>
-              <rect x="20" y="380" width="120" height="140" fill="url(#up-ribh)"></rect>
-              <rect x="180" y="300" width="150" height="34" fill="#0C0B0B"></rect>
-              <text x="255" y="323" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="15" fill="#F3F1EC" letter-spacing="2">FORNECEDOR</text>
-              <rect x="300" y="120" width="26" height="130" fill="url(#up-cyl)"></rect>
-              <rect x="300" y="140" width="26" height="8" fill="#B5121B"></rect>
+            <g>
+              <rect x="-250" y="230" width="580" height="290" fill="url(#up-wall)"></rect>
+              <polygon points="-250,230 -250,168 -178,230" fill="#D3D1CB" stroke="#9A9893" stroke-width="1"></polygon>
+              <rect x="-250" y="170" width="9" height="60" fill="url(#up-win)"></rect>
+              <polygon points="-178,230 -178,168 -106,230" fill="#D3D1CB" stroke="#9A9893" stroke-width="1"></polygon>
+              <rect x="-178" y="170" width="9" height="60" fill="url(#up-win)"></rect>
+              <polygon points="-106,230 -106,168 -34,230" fill="#D3D1CB" stroke="#9A9893" stroke-width="1"></polygon>
+              <rect x="-106" y="170" width="9" height="60" fill="url(#up-win)"></rect>
+              <polygon points="-34,230 -34,168 38,230" fill="#D3D1CB" stroke="#9A9893" stroke-width="1"></polygon>
+              <rect x="-34" y="170" width="9" height="60" fill="url(#up-win)"></rect>
+              <polygon points="38,230 38,168 110,230" fill="#D3D1CB" stroke="#9A9893" stroke-width="1"></polygon>
+              <rect x="38" y="170" width="9" height="60" fill="url(#up-win)"></rect>
+              <polygon points="110,230 110,168 182,230" fill="#D3D1CB" stroke="#9A9893" stroke-width="1"></polygon>
+              <rect x="110" y="170" width="9" height="60" fill="url(#up-win)"></rect>
+              <polygon points="182,230 182,168 254,230" fill="#D3D1CB" stroke="#9A9893" stroke-width="1"></polygon>
+              <rect x="182" y="170" width="9" height="60" fill="url(#up-win)"></rect>
+              <polygon points="254,230 254,168 326,230" fill="#D3D1CB" stroke="#9A9893" stroke-width="1"></polygon>
+              <rect x="254" y="170" width="9" height="60" fill="url(#up-win)"></rect>
+              <polygon points="326,230 326,168 398,230" fill="#D3D1CB" stroke="#9A9893" stroke-width="1"></polygon>
+              <rect x="326" y="170" width="9" height="60" fill="url(#up-win)"></rect>
+              <rect x="-250" y="226" width="580" height="8" fill="#8E8C86"></rect>
+              <rect x="-225" y="262" width="40" height="64" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <rect x="-167" y="262" width="40" height="64" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <rect x="-109" y="262" width="40" height="64" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <rect x="-51" y="262" width="40" height="64" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <rect x="7" y="262" width="40" height="64" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <rect x="65" y="262" width="40" height="64" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <rect x="123" y="262" width="40" height="64" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <rect x="181" y="262" width="40" height="64" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <rect x="239" y="262" width="40" height="64" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <rect x="297" y="262" width="40" height="64" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <rect x="-215" y="392" width="100" height="128" fill="#3A3A38"></rect><rect x="-215" y="392" width="100" height="128" fill="url(#up-ribh)"></rect><rect x="-215" y="386" width="100" height="8" fill="#B5121B"></rect>
+              <rect x="-95" y="392" width="100" height="128" fill="#3A3A38"></rect><rect x="-95" y="392" width="100" height="128" fill="url(#up-ribh)"></rect><rect x="-95" y="386" width="100" height="8" fill="#B5121B"></rect>
+              <rect x="-170" y="10" width="36" height="160" fill="url(#up-cyl)"></rect><rect x="-170" y="30" width="36" height="12" fill="#B5121B"></rect><rect x="-170" y="56" width="36" height="12" fill="#F4F4F1"></rect><ellipse cx="-152" cy="10" rx="18" ry="6" fill="#3A3A38"></ellipse>
+              <rect x="-100" y="50" width="30" height="120" fill="url(#up-cyl)"></rect><rect x="-100" y="66" width="30" height="10" fill="#B5121B"></rect><ellipse cx="-85" cy="50" rx="15" ry="5" fill="#3A3A38"></ellipse>
+              <sc-for list="{{embSmoke}}" as="m" hint-placeholder-count="0"><circle cx="{{m.x}}" cy="{{m.y}}" r="{{m.r}}" fill="#A9A7A2" opacity="{{m.o}}" filter="url(#up-blur10)"></circle></sc-for>
+              <rect x="180" y="300" width="230" height="220" fill="#000000" opacity="0.25" filter="url(#up-blur10)" transform="translate(10 8)"></rect>
+              <rect x="180" y="300" width="230" height="220" fill="#F4F3EF" stroke="#9A9893"></rect>
+              <rect x="192" y="318" width="206" height="34" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <line x1="243.5" y1="318" x2="243.5" y2="352" stroke="#E6E4DE" stroke-width="3"></line>
+              <line x1="295.0" y1="318" x2="295.0" y2="352" stroke="#E6E4DE" stroke-width="3"></line>
+              <line x1="346.5" y1="318" x2="346.5" y2="352" stroke="#E6E4DE" stroke-width="3"></line>
+              <rect x="192" y="370" width="206" height="34" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <line x1="243.5" y1="370" x2="243.5" y2="404" stroke="#E6E4DE" stroke-width="3"></line>
+              <line x1="295.0" y1="370" x2="295.0" y2="404" stroke="#E6E4DE" stroke-width="3"></line>
+              <line x1="346.5" y1="370" x2="346.5" y2="404" stroke="#E6E4DE" stroke-width="3"></line>
+              <rect x="192" y="422" width="206" height="34" fill="url(#up-win)" stroke="#6E6C67"></rect>
+              <line x1="243.5" y1="422" x2="243.5" y2="456" stroke="#E6E4DE" stroke-width="3"></line>
+              <line x1="295.0" y1="422" x2="295.0" y2="456" stroke="#E6E4DE" stroke-width="3"></line>
+              <line x1="346.5" y1="422" x2="346.5" y2="456" stroke="#E6E4DE" stroke-width="3"></line>
+              <rect x="262" y="470" width="66" height="50" fill="#22313F"></rect>
+              <rect x="172" y="262" width="246" height="40" fill="#0C0B0B"></rect>
+              <text x="295" y="289" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="17" fill="#F2B33D" letter-spacing="3">FORNECEDOR</text>
+              <rect x="172" y="296" width="246" height="6" fill="#B5121B"></rect>
+              <line x1="-250" y1="496" x2="-250" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="-220" y1="496" x2="-220" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="-190" y1="496" x2="-190" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="-160" y1="496" x2="-160" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="-130" y1="496" x2="-130" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="-100" y1="496" x2="-100" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="-70" y1="496" x2="-70" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="-40" y1="496" x2="-40" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="-10" y1="496" x2="-10" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="20" y1="496" x2="20" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="50" y1="496" x2="50" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="80" y1="496" x2="80" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="110" y1="496" x2="110" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="140" y1="496" x2="140" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="170" y1="496" x2="170" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="200" y1="496" x2="200" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="230" y1="496" x2="230" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="260" y1="496" x2="260" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="290" y1="496" x2="290" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="320" y1="496" x2="320" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="350" y1="496" x2="350" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="380" y1="496" x2="380" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="410" y1="496" x2="410" y2="520" stroke="#6E6C67" stroke-width="3"></line>
+              <line x1="-250" y1="500" x2="410" y2="500" stroke="#6E6C67" stroke-width="3"></line>
             </g>
             <g transform="translate({{truckAX}} 363) scale(0.6667)"><use href="#up-rig" x="0" y="0" width="900" height="260"></use></g>
             <use href="#up-cside" x="420" y="{{cAY}}" width="400" height="112" style="color: #B5121B"></use>
@@ -430,7 +500,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
 
         <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 460px">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #8E0E14">03 — COLETA E EMBARQUE</div>
-          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s3Title}}</h2>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(32px, min(5.4vw, 8.6vh), 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s3Title}}</h2>
           <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.5; color: #3B3934; min-height: 3em">{{s3Text}}</p>
         </div>
       </div>
@@ -444,7 +514,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
             </sc-for>
           </g>
         </svg>
-        <div class="v-ship" style="position: absolute; left: 62%; top: 0; width: min(20vw, 260px); transform: translate(-50%, {{shipY}}px) scale({{shipS}}); transform-origin: 50% 0">
+        <div class="v-ship" style="position: absolute; left: 62%; top: 0; width: min(20vw, 260px, 30vh); transform: translate(-50%, {{shipY}}px) scale({{shipS}}); transform-origin: 50% 0">
           <svg viewBox="-120 -40 540 1340" role="img" aria-label="Navio porta-containers da UP China no oceano" style="width: 100%; display: block; overflow: visible">
             <path d="M30 140 C -30 420 -70 900 -100 1300" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="16" filter="url(#up-blur4)"></path>
             <path d="M270 140 C 330 420 370 900 400 1300" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="16" filter="url(#up-blur4)"></path>
@@ -488,7 +558,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
         </div>
         <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 460px; color: #FFFFFF">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">04 — FRETE MARÍTIMO</div>
-          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s4Title}}</h2>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(32px, min(5.4vw, 8.6vh), 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s4Title}}</h2>
           <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.5; color: #D5DEEA">Acompanhamos a carga em cada etapa da viagem e mantemos você informado até a chegada ao porto.</p>
         </div>
         <div class="v-route" style="position: absolute; left: 28px; right: 28px; bottom: 76px; display: flex; align-items: center; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #FFFFFF">
@@ -506,7 +576,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
         <sc-for list="{{cloudsBack}}" as="c" hint-placeholder-count="0">
           <div class="cloud" aria-hidden="true" style="left: {{c.x}}%; top: {{c.y}}%; width: {{c.w}}px; height: {{c.h}}px; opacity: {{c.o}}"></div>
         </sc-for>
-        <div class="v-plane" style="position: absolute; left: 62%; top: {{planeTop}}%; width: min(48vw, 600px); transform: translate(-50%, -50%) rotate({{planeRot}}deg) scale({{planeS}})">
+        <div class="v-plane" style="position: absolute; left: 62%; top: {{planeTop}}%; width: min(48vw, 600px, 78vh); transform: translate(-50%, -50%) rotate({{planeRot}}deg) scale({{planeS}})">
           <svg viewBox="0 0 400 420" role="img" aria-label="Avião cargueiro da UP China visto de cima, sobrevoando as nuvens" style="width: 100%; display: block; overflow: visible">
             <g transform="translate(60 80)" opacity="0.28" filter="url(#up-blur10)">
               <path d="M200 18 C 216 18 224 54 224 96 L 224 340 C 224 372 212 392 200 398 C 188 392 176 372 176 340 L 176 96 C 176 54 184 18 200 18 Z M182 150 L30 250 L28 264 L182 222 Z M218 150 L370 250 L372 264 L218 222 Z M184 340 L120 378 L122 388 L186 370 Z M216 340 L280 378 L278 388 L214 370 Z" fill="#0E2A55"></path>
@@ -550,7 +620,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
         </sc-for>
         <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 460px; color: #0C0B0B">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #7A0A10">05 — FRETE AÉREO</div>
-          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{airTitle}}</h2>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(32px, min(5.4vw, 8.6vh), 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{airTitle}}</h2>
           <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.5; color: #1E2B3A">Para amostras, reposições urgentes e cargas de alto valor, a mercadoria vem de avião.</p>
         </div>
         <div class="v-route" style="position: absolute; left: 28px; right: 28px; bottom: 76px; display: flex; align-items: center; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #0C0B0B">
@@ -583,7 +653,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
         </div>
         <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 440px; color: #FFFFFF">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">06 — DESEMBARAÇO</div>
-          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s5Title}}</h2>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(32px, min(5.4vw, 8.6vh), 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s5Title}}</h2>
           <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.5; color: #F1D6D7">Classificação fiscal, impostos e liberação aduaneira acompanhados pelo nosso time, sem surpresa no porto.</p>
         </div>
       </div>
@@ -624,7 +694,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
         </div>
         <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 520px">
           <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #8E0E14">07 — ENTREGA</div>
-          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.8vw, 96px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s6Title}}</h2>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(32px, min(5.8vw, 9vh), 96px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s6Title}}</h2>
           <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; opacity: {{ctaOp}}">
             <a href="https://beacons.ai/upchina" style="background: #B5121B; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; height: 52px; padding: 0 24px; display: flex; align-items: center; gap: 10px">Quero importar
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
@@ -666,7 +736,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
 
   <!-- IMERSÃO NA CHINA -->
   <section class="imm" id="imersao" ref="{{setImm}}" style="position: relative; height: 3600px; background: #120606">
-    <div class="imm-stick" ref="{{setImmStick}}" style="position: sticky; top: 61px; height: min(calc(100vh - 61px), 900px); min-height: 640px; overflow: hidden">
+    <div class="imm-stick" ref="{{setImmStick}}" style="position: sticky; top: 61px; height: min(calc(100vh - 61px), 900px); min-height: 380px; overflow: hidden">
       <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 46%; white-space: nowrap; font-weight: 900; font-stretch: 62%; font-size: clamp(160px, 26vw, 420px); line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(242,179,61,.16); transform: translateX({{immWordX}}px)">中国 IMERSÃO 中国 IMERSÃO</div>
 
       <div class="imm-wrap" ref="{{setImmWrap}}" style="max-width: 1440px; margin: 0 auto; height: {{immWrapH}}; box-sizing: border-box; padding: 40px 28px 32px; display: flex; flex-wrap: wrap; gap: 32px; position: relative; transform: scale({{immScale}}); transform-origin: 50% 0">
@@ -1008,6 +1078,7 @@ class Component extends DCLogic {
       emb.cCX = (ccx - 200).toFixed(1); emb.cCY = ccy.toFixed(1);
       emb.sprCX = (ccx - 210).toFixed(1); emb.sprCY = (ccy - 16).toFixed(1);
       emb.trolX = (ccx - 45).toFixed(1); emb.cab1 = (ccx - 30).toFixed(1); emb.cab2 = (ccx + 30).toFixed(1);
+      emb.smoke = []; for (let i = 0; i < 8; i++) { const ph = ((p * 9 + i / 8) % 1); const bx = i % 2 ? -85 : -152, by = i % 2 ? 46 : 6; emb.smoke.push({ x: (bx + ph * 70).toFixed(1), y: (by - ph * 150).toFixed(1), r: (12 + ph * 30).toFixed(1), o: (0.55 * (1 - ph)).toFixed(2) }); }
       emb.shipCX = (this.ease(this.seg(pc, 0.88, 1)) * 60).toFixed(1);
       const ph = e < 0.36 ? 0 : e < 0.68 ? 1 : 2;
       const T = ['BUSCAMOS NA FÁBRICA.', 'LEVAMOS ATÉ O PORTO.', 'E EMBARCAMOS NO NAVIO.'];
@@ -1018,7 +1089,7 @@ class Component extends DCLogic {
     }
     // 04 oceano
     const H = this.stick ? this.stick.offsetHeight : 860;
-    const shipW = Math.min(W * 0.2, 260);
+    const shipW = Math.min(W * 0.2, 260, (typeof window !== 'undefined' ? window.innerHeight : 900) * 0.3);
     const shipH = shipW * 1340 / 540;
     const zoom = this.ease(this.seg(t4, 0.62, 1));
     const shipY = H * 0.85 - this.seg(p, 0.50, 0.63) *(shipH * 0.7 + H * 0.4) * (1 - zoom * 0.3);
@@ -1039,8 +1110,8 @@ class Component extends DCLogic {
     const stampS = (2.6 - 1.6 * this.eout(sk)).toFixed(3);
 
     // 06 entrega
-    const truckW = Math.min(W * 0.62, 760);
-    const bldW = Math.min(W * 0.34, 420);
+    const truckW = Math.min(W * 0.62, 760, H * 1.25);
+    const bldW = Math.min(W * 0.34, 420, H * 0.62 * 420 / 380);
     const endX = W * 0.97 - bldW - truckW + bldW * 0.12;
     const mv = this.eout(this.seg(t6, 0, 0.72));
     const truckX = -truckW - 40 + mv * (endX + truckW + 40);
@@ -1055,7 +1126,7 @@ class Component extends DCLogic {
     if (scene === 5) hudLeft = String(Math.round(780 + ta * 120)) + ' KM/H · ≈ ' + Math.round(ta * 18500).toLocaleString('pt-BR') + ' KM PELO AR';
     if (scene === 6) hudLeft = 'ALFÂNDEGA · BRASIL';
     if (scene === 7) hudLeft = String(Math.round((1 - this.ease(this.seg(t6, 0.35, 0.72))) * 60)).padStart(2, '0') + ' KM/H';
-    const light = scene === 2 || scene === 5 || scene === 7;
+    const light = scene === 2 || scene === 3 || scene === 5 || scene === 7;
     const hud = light ? '#0C0B0B' : '#FFFFFF';
     const bar = ['Fornecedor', 'Fábrica', 'Embarque', 'Marítimo', 'Aéreo', 'Desembaraço', 'Entrega'].map((t, i) => {
       const done = i + 1 < scene, cur = i + 1 === scene;
@@ -1106,7 +1177,7 @@ class Component extends DCLogic {
       teeth: this.TEETH, fwin: this.FWIN, smoke: smoke, checks: checks,
       scanX: scanX.toFixed(1), scanO: t2 > 0.02 && t2 < 0.95 ? 0.9 : 0, scanO2: t2 > 0.02 && t2 < 0.95 ? 0.35 : 0,
       s2Title: this.scr('VAMOS ATÉ A FÁBRICA.', this.seg(t2, 0.02, 0.3), fr),
-      stack: stack, s3Title: emb.title, s3Text: emb.text, emA: emb.a, emB: emb.b, emC: emb.c, truckAX: emb.truckAX, cAY: emb.cAY, sprY: emb.sprY, sprY2: emb.sprY2, boomMidX: emb.bmx, boomMidY: emb.bmy, rtx: emb.rtx, rty: emb.rty, rta: emb.rta, setRoute3: (el) => { this.route3 = el; }, portBoxes: this.PORTB, deckBoxes: this.DECKB, shipCX: emb.shipCX, trolX: emb.trolX, cab1: emb.cab1, cab2: emb.cab2, sprCX: emb.sprCX, sprCY: emb.sprCY, cCX: emb.cCX, cCY: emb.cCY,
+      stack: stack, embSmoke: emb.smoke, s3Title: emb.title, s3Text: emb.text, emA: emb.a, emB: emb.b, emC: emb.c, truckAX: emb.truckAX, cAY: emb.cAY, sprY: emb.sprY, sprY2: emb.sprY2, boomMidX: emb.bmx, boomMidY: emb.bmy, rtx: emb.rtx, rty: emb.rty, rta: emb.rta, setRoute3: (el) => { this.route3 = el; }, portBoxes: this.PORTB, deckBoxes: this.DECKB, shipCX: emb.shipCX, trolX: emb.trolX, cab1: emb.cab1, cab2: emb.cab2, sprCX: emb.sprCX, sprCY: emb.sprCY, cCX: emb.cCX, cCY: emb.cCY,
       waves: this.WAVES, waveY: (p * 4200 % 900).toFixed(0),
       shipBoxes: this.SHIP, shipShadow: this.SHIPSH, bayLines: this.BAYS, shipY: shipY.toFixed(1), shipS: (1 - zoom * 0.5).toFixed(3),
       seaPct: (t4 * 100).toFixed(1),
