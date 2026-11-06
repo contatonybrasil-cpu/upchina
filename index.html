@@ -21,7 +21,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
 </style>
 
 <style>
-@media (max-width: 760px){
+@media (max-width: 900px){
  header nav{display:none!important}
  header a{white-space:nowrap!important}
  header a span{font-size:18px!important}
@@ -34,7 +34,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
  .sctext ul{margin-top:12px!important;gap:6px!important}
  .sctext li{font-size:13px!important}
  .v-radar{width:118vw!important;right:-30%!important;top:72%!important}
- .v-fact{width:112vw!important;right:-10%!important;bottom:12%!important}
+ .v-fact{width:min(104vw,560px)!important;right:-6%!important;bottom:5%!important}
  .v-stack{width:118vw!important;right:-12%!important;bottom:10%!important}
  .v-ship{left:74%!important;width:30vw!important}
  .v-docs{width:88vw!important;right:6%!important;top:72%!important;height:40%!important}
@@ -53,11 +53,14 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
  .imm-cards li{padding:12px!important;min-height:0!important}
  .imm-cards li span:nth-child(2){font-size:17px!important;overflow-wrap:anywhere}
  .imm h2{font-size:52px!important;min-height:0!important}
- .imm-right svg text{font-size:30px!important}
+ .imm-right svg text{font-size:20px!important}
  .imm-right > svg{margin:10px 0 14px!important}
  .imm-stick{position:relative!important;top:0!important;height:auto!important;min-height:0!important}
- #contato h2,#etapas h2{font-size:48px!important}
+ #contato h2{font-size:46px!important}
+ #etapas h2{font-size:38px!important;overflow-wrap:anywhere}
+ .imm-wrap{transform:none!important;height:auto!important}
 }
+@media (max-width: 520px){ .imm-right svg text{font-size:30px!important} .v-fact{width:90vw!important;right:-2%!important;bottom:3%!important} }
 </style>
 </head>
 <body>
@@ -405,8 +408,8 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
             <line x1="200" y1="40" x2="200" y2="54" stroke="#B5121B" stroke-width="1.5"></line>
             <line x1="176" y1="140" x2="224" y2="140" stroke="#AEB5BD" stroke-width="1"></line>
             <line x1="176" y1="250" x2="224" y2="250" stroke="#AEB5BD" stroke-width="1"></line>
+                        <text x="200" y="210" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="22" fill="#B5121B" transform="rotate(90 200 210)" style="font-stretch: 70%" letter-spacing="1">UP CHINA CARGO</text>
             <rect x="176" y="104" width="48" height="4" fill="#F2B33D"></rect>
-            <text x="200" y="210" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="22" fill="#B5121B" transform="rotate(90 200 210)" style="font-stretch: 70%" letter-spacing="1">UP CHINA CARGO</text>
             <rect x="196" y="320" width="8" height="76" rx="3" fill="#B5121B"></rect>
             <image href="logo.png" x="188" y="352" width="24" height="24"></image>
           </svg>
@@ -535,7 +538,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
     <div class="imm-stick" ref="{{setImmStick}}" style="position: sticky; top: 61px; height: min(calc(100vh - 61px), 900px); min-height: 640px; overflow: hidden">
       <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 46%; white-space: nowrap; font-weight: 900; font-stretch: 62%; font-size: clamp(160px, 26vw, 420px); line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(242,179,61,.16); transform: translateX({{immWordX}}px)">中国 IMERSÃO 中国 IMERSÃO</div>
 
-      <div class="imm-wrap" style="max-width: 1440px; margin: 0 auto; height: 100%; box-sizing: border-box; padding: 40px 28px 32px; display: flex; flex-wrap: wrap; gap: 32px; position: relative">
+      <div class="imm-wrap" ref="{{setImmWrap}}" style="max-width: 1440px; margin: 0 auto; height: {{immWrapH}}; box-sizing: border-box; padding: 40px 28px 32px; display: flex; flex-wrap: wrap; gap: 32px; position: relative; transform: scale({{immScale}}); transform-origin: 50% 0">
         <!-- texto -->
         <div class="imm-left" style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
           <div>
@@ -562,8 +565,8 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
             <circle cx="60" cy="220" r="7" fill="#F3F1EC"></circle>
             <circle cx="740" cy="220" r="7" fill="#E2202B"></circle>
             <circle cx="740" cy="220" r="18" fill="#E2202B" opacity="{{arrO}}" filter="url(#up-glow)"></circle>
-            <text x="60" y="246" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#F3F1EC">GRU · SÃO PAULO</text>
-            <text x="740" y="246" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#F3F1EC">CAN · GUANGZHOU</text>
+            <text x="44" y="246" text-anchor="start" font-family="JetBrains Mono, monospace" font-size="14" fill="#F3F1EC">GRU · SÃO PAULO</text>
+            <text x="756" y="246" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="14" fill="#F3F1EC">CAN · GUANGZHOU</text>
             <g transform="translate({{apx}} {{apy}}) rotate({{apr}})">
               <path d="M0 -16 L3 -5 L16 3 L16 6 L3 3 L2 11 L7 14 L7 16 L0 14 L-7 16 L-7 14 L-2 11 L-3 3 L-16 6 L-16 3 L-3 -5 Z" fill="#FFFFFF" stroke="#0C0B0B" stroke-width="1"></path>
             </g>
@@ -733,12 +736,27 @@ class Component extends DCLogic {
     window.removeEventListener('resize', this.onScroll);
     clearInterval(this.timer);
   }
+  fitImm() {
+    if (this.immWrap && this.immStick) {
+    let sc = 1, wh = '100%';
+    if (window.innerWidth > 900) {
+      let need = 0;
+      Array.prototype.slice.call(this.immWrap.children).forEach((k) => { need = Math.max(need, k.offsetTop + k.offsetHeight); });
+      need += 32;
+      const avail = this.immStick.clientHeight;
+      if (need > avail) { sc = avail / need; wh = need + 'px'; }
+    }
+    if (sc !== this.immScale || wh !== this.immWrapH) { this.immScale = sc; this.immWrapH = wh; this.forceUpdate(); }
+  }
+  }
   update() {
+    this.fitImm();
+    if (!this.fitRaf) this.fitRaf = requestAnimationFrame(() => requestAnimationFrame(() => { this.fitRaf = null; this.fitImm(); }));
     if (this.imm && this.immStick) {
       const ri = this.imm.getBoundingClientRect();
       const runI = ri.height - this.immStick.offsetHeight;
       let q = runI > 0 ? (61 - ri.top + this.immStick.offsetHeight * 0.6) / (runI + this.immStick.offsetHeight * 0.6) : 1;
-      if (window.innerWidth <= 760 && this.immFlight) {
+      if (window.innerWidth <= 900 && this.immFlight) {
         const vh = window.innerHeight, fr = this.immFlight.getBoundingClientRect();
         q = (vh * 0.95 - fr.top) / (vh * 0.95 + fr.height * 0.6);
       }
@@ -894,7 +912,7 @@ class Component extends DCLogic {
     });
 
     return {
-      setImm: (el) => { this.imm = el; }, setImmFlight: (el) => { this.immFlight = el; }, setImmStick: (el) => { this.immStick = el; }, setArc: (el) => { this.arc = el; },
+      setImm: (el) => { this.imm = el; }, setImmWrap: (el) => { this.immWrap = el; }, immScale: (this.immScale || 1).toFixed(4), immWrapH: this.immWrapH || '100%', setImmFlight: (el) => { this.immFlight = el; }, setImmStick: (el) => { this.immStick = el; }, setArc: (el) => { this.arc = el; },
       immTitle: this.scr('IMERSÃO NA CHINA.', this.seg(q, 0.02, 0.25), Math.floor(q * 600)),
       immWordX: (200 - q * 1400).toFixed(0),
       arcLen: arcLen.toFixed(1), arcOff: (arcLen * (1 - fly)).toFixed(1), arrO: fly > 0.98 ? 0.8 : 0,
