@@ -43,7 +43,11 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
  .v-stamp{left:16%!important;top:40%!important;font-size:30px!important;border-width:4px!important;padding:6px 12px!important}
  .v-plane{left:50%!important;width:76vw!important;margin-top:130px!important}
  .v-route{bottom:64px!important}
- .v-emb{width:190vw!important;left:-45vw!important;right:auto!important;height:46%!important;bottom:8%!important}
+ #topo{height:calc(100svh - 61px)!important;min-height:0!important}
+ .sctext h2{min-height:0!important}
+ .v-emb{right:auto!important;height:46%!important;bottom:9%!important}
+ .v-emb-a{width:160vw!important;left:-56vw!important}
+ .v-emb-c{width:120vw!important;left:-12vw!important}
  .v-roadmap{transform:translate(470px,470px) scale(0.36)!important}
  .pbar{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:4px!important}
  .pbar li{font-size:0!important;padding-top:0!important}
@@ -332,7 +336,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
         <!-- 3a: coleta na fábrica (vista lateral) -->
         <div style="position: absolute; inset: 0; opacity: {{emA}}">
           <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 13.7%; background: #2A2826; border-top: 3px solid #0C0B0B"></div>
-          <svg class="v-emb" viewBox="-260 0 1800 600" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Empilhadeira de containers colocando o container UP China no caminhão, na fábrica" style="position: absolute; left: 0; right: 0; bottom: 7%; width: 100%; height: 50%; overflow: visible">
+          <svg class="v-emb v-emb-a" viewBox="-260 0 1800 600" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Empilhadeira de containers colocando o container UP China no caminhão, na fábrica" style="position: absolute; left: 0; right: 0; bottom: 7%; width: 100%; height: 50%; overflow: visible">
             <rect x="-400" y="520" width="2400" height="200" fill="#2A2826"></rect>
             <rect x="-400" y="520" width="2400" height="6" fill="#0C0B0B"></rect>
             <g>
@@ -466,7 +470,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
 
         <!-- 3c: porto, guindaste coloca no navio (vista lateral) -->
         <div style="position: absolute; inset: 0; opacity: {{emC}}">
-          <svg class="v-emb" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Guindaste do porto colocando o container UP China no navio" style="position: absolute; left: 0; right: 0; bottom: 7%; width: 100%; height: 50%; overflow: visible">
+          <svg class="v-emb v-emb-c" viewBox="0 0 1600 600" preserveAspectRatio="xMidYMax meet" role="img" aria-label="Guindaste do porto colocando o container UP China no navio" style="position: absolute; left: 0; right: 0; bottom: 7%; width: 100%; height: 50%; overflow: visible">
             <rect x="680" y="470" width="1400" height="260" fill="#0A2346"></rect>
             <path d="M700 490 q 30 -8 60 0 M900 505 q 30 -8 60 0 M1200 495 q 30 -8 60 0 M1450 510 q 30 -8 60 0" stroke="#FFFFFF" stroke-opacity="0.35" stroke-width="3" fill="none"></path>
             <rect x="-400" y="520" width="1100" height="200" fill="#8E8C86"></rect>
@@ -1186,8 +1190,8 @@ class Component extends DCLogic {
       s5Title: this.scr('DESEMBARAÇO SEM DOR DE CABEÇA.', this.seg(t5, 0.02, 0.3), fr),
       truckW: truckW.toFixed(0), bldW: bldW.toFixed(0), truckX: truckX.toFixed(1), wheelDeg: wheelDeg.toFixed(1), doorH: doorH,
       bwin: this.BWIN, lanes: this.LANES,
-      s6Title: this.scr('ENTREGUE NA SUA EMPRESA.', this.seg(t6, 0.55, 0.85), fr),
-      ctaOp: this.seg(t6, 0.8, 0.9).toFixed(2),
+      s6Title: this.scr('ENTREGUE NA SUA EMPRESA.', this.seg(t6, 0.03, 0.3), fr),
+      ctaOp: this.seg(t6, 0.45, 0.6).toFixed(2),
       etapas: this.ETAPAS
     };
   }
