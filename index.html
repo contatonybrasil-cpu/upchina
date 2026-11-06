@@ -48,7 +48,7 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
  .imm{height:auto!important}
  .imm-wrap{flex-direction:column!important;padding:36px 18px 40px!important;gap:22px!important}
  .imm-left{display:contents!important}
- .imm-right{order:2!important}
+ .imm-right{order:2!important;max-width:none!important;padding:0!important}
  .imm-cards{order:3!important}
  .imm-cards li{padding:12px!important;min-height:0!important}
  .imm-cards li span:nth-child(2){font-size:17px!important;overflow-wrap:anywhere}
@@ -538,28 +538,19 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
     <div class="imm-stick" ref="{{setImmStick}}" style="position: sticky; top: 61px; height: min(calc(100vh - 61px), 900px); min-height: 640px; overflow: hidden">
       <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 46%; white-space: nowrap; font-weight: 900; font-stretch: 62%; font-size: clamp(160px, 26vw, 420px); line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(242,179,61,.16); transform: translateX({{immWordX}}px)">中国 IMERSÃO 中国 IMERSÃO</div>
 
-      <div class="imm-wrap" style="max-width: 1440px; margin: 0 auto; height: 100%; box-sizing: border-box; padding: 40px 28px 32px; display: flex; flex-wrap: wrap; gap: 32px; position: relative">
+      <div class="imm-wrap" style="max-width: 1440px; margin: 0 auto; height: 100%; box-sizing: border-box; padding: 28px 28px 24px; display: flex; flex-wrap: wrap; align-content: center; column-gap: 40px; row-gap: 18px; position: relative">
         <!-- texto -->
-        <div class="imm-left" style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+        <div class="imm-left" style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 24px">
           <div>
             <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">EXPERIÊNCIA UP CHINA</div>
-            <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 66%; font-size: clamp(56px, 7.4vw, 124px); line-height: 0.84; text-transform: uppercase; min-height: 1.7em">{{immTitle}}</h2>
+            <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 66%; font-size: clamp(48px, min(6.4vw, 10.5vh), 112px); line-height: 0.84; text-transform: uppercase; min-height: 1.7em">{{immTitle}}</h2>
             <p style="margin: 20px 0 0; max-width: 440px; font-size: 17px; line-height: 1.5; color: #D8C9C6">Levamos empresários para dentro das feiras, fábricas e escritórios que movem o comércio mundial. Uma viagem guiada, do embarque ao último aperto de mão.</p>
           </div>
-          <ol class="imm-cards" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; perspective: 1200px">
-            <sc-for list="{{immCards}}" as="c" hint-placeholder-count="4">
-              <li style="background: {{c.bg}}; color: {{c.fg}}; padding: 16px; min-height: 112px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; transform-origin: 50% 0; transform: rotateX({{c.rx}}deg); opacity: {{c.o}}; box-shadow: 0 18px 40px rgba(0,0,0,.35)">
-                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; opacity: 0.8">{{c.n}}</span>
-                <span style="font-weight: 900; font-stretch: 72%; font-size: 22px; line-height: 1; text-transform: uppercase">{{c.t}}</span>
-                <span style="font-size: 13px; line-height: 1.4; opacity: 0.85">{{c.d}}</span>
-              </li>
-            </sc-for>
-          </ol>
         </div>
 
         <!-- voo + cartão de embarque -->
-        <div class="imm-right" ref="{{setImmFlight}}" style="flex: 1.3 1 520px; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 8px">
-          <svg viewBox="0 0 800 250" role="img" aria-label="Rota do voo de São Paulo até a China" style="width: 100%; display: block; overflow: visible">
+        <div class="imm-right" ref="{{setImmFlight}}" style="flex: 1.3 1 520px; min-width: 0; max-width: min(760px, 86vh); display: flex; flex-direction: column; justify-content: center; gap: 4px; padding: 0 12px">
+          <svg viewBox="-70 -10 940 270" role="img" aria-label="Rota do voo de São Paulo até a China" style="width: 100%; display: block; overflow: visible">
             <path d="M60 220 Q400 -70 740 220" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2" stroke-dasharray="6 10"></path>
             <path ref="{{setArc}}" d="M60 220 Q400 -70 740 220" fill="none" stroke="#F2B33D" stroke-width="3" stroke-dasharray="{{arcLen}}" stroke-dashoffset="{{arcOff}}"></path>
             <circle cx="60" cy="220" r="7" fill="#F3F1EC"></circle>
@@ -603,6 +594,15 @@ input:focus{outline:2px solid #F2B33D;outline-offset:2px}
             <span>{{immStatus}}</span><span>{{immKm}}</span>
           </div>
         </div>
+          <ol class="imm-cards" style="flex: 1 1 100%; list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 10px; perspective: 1200px">
+            <sc-for list="{{immCards}}" as="c" hint-placeholder-count="4">
+              <li style="background: {{c.bg}}; color: {{c.fg}}; padding: 16px; min-height: 96px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; transform-origin: 50% 0; transform: rotateX({{c.rx}}deg); opacity: {{c.o}}; box-shadow: 0 18px 40px rgba(0,0,0,.35)">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; opacity: 0.8">{{c.n}}</span>
+                <span style="font-weight: 900; font-stretch: 72%; font-size: 22px; line-height: 1; text-transform: uppercase">{{c.t}}</span>
+                <span style="font-size: 13px; line-height: 1.4; opacity: 0.85">{{c.d}}</span>
+              </li>
+            </sc-for>
+          </ol>
       </div>
     </div>
   </section>
