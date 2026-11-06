@@ -1224,7 +1224,7 @@ class Component extends DCLogic {
 }
 
 (function(){
-var comp=new Component({});var vals=comp.renderVals();var binds=[],refs=[],ifs=[];
+var comp=new Component({});window.__upComp=comp;var vals=comp.renderVals();var binds=[],refs=[],ifs=[];
 function res(p,sc){p=p.trim();if(p==='true')return true;if(p==='false')return false;if(/^-?\d/.test(p))return +p;var a=p.split('.'),h=a[0],v;
  if(sc&&sc[h])v=sc[h]();else v=vals[h];for(var i=1;i<a.length;i++){if(v==null)return v;v=v[a[i]]}return v}
 var RE=/\{\{([^}]+)\}\}/g,WH=/^\s*\{\{([^}]+)\}\}\s*$/;
@@ -1256,6 +1256,61 @@ function apply(){vals=comp.renderVals();var base=vals,zv=zoneVals();for(var i=0;
 zoneEls=Array.prototype.slice.call(document.querySelectorAll('[data-phase],[data-scene]'));window.addEventListener('scroll',function(){if(window.innerWidth<=900)__sched()},{passive:true});window.addEventListener('resize',function(){__sched()});
 var pend=false;window.__sched=function(){if(pend)return;pend=true;requestAnimationFrame(function(){pend=false;apply()})};
 apply();refs.forEach(function(r){var f=res(r.p,r.sc);if(f)f(r.el)});apply();if(comp.componentDidMount)comp.componentDidMount();
+})();
+</script>
+<script>(function(){
+var comp=window.__upComp;
+var css=document.createElement('style');
+css.textContent='.snd{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom));z-index:60;height:44px;padding:0 16px 0 14px;border-radius:22px;border:1px solid rgba(255,255,255,.25);background:rgba(12,11,11,.88);color:#F3F1EC;display:flex;align-items:center;gap:10px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.08em;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}.snd:focus-visible{outline:2px solid #F2B33D;outline-offset:2px}.snd .bars{display:flex;align-items:flex-end;gap:2px;height:14px}.snd .bars i{display:block;width:3px;height:4px;background:#F2B33D}.snd.on .bars i{animation:sndb .9s ease-in-out infinite}.snd.on .bars i:nth-child(2){animation-delay:.2s}.snd.on .bars i:nth-child(3){animation-delay:.4s}.snd.on .bars i:nth-child(4){animation-delay:.1s}@keyframes sndb{0%,100%{height:3px}50%{height:14px}}@media (prefers-reduced-motion: reduce){.snd.on .bars i{animation:none;height:10px}}';
+document.head.appendChild(css);
+var btn=document.createElement('button');btn.type='button';btn.className='snd';btn.setAttribute('aria-pressed','false');
+btn.innerHTML='<span class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span class="lbl">LIGAR SOM</span>';
+document.body.appendChild(btn);
+var ctx,master,dry,rev,nb,on=false,nextBar=0,bar=0,timer=null,last=0;
+var BPM=96,BEAT=60/BPM,BARL=BEAT*4;
+var CH=[[57,60,64,69],[53,57,60,65],[48,55,60,64],[55,59,62,67]];
+function f(m){return 440*Math.pow(2,(m-69)/12)}
+function imp(sec){var n=Math.floor(ctx.sampleRate*sec),b=ctx.createBuffer(2,n,ctx.sampleRate);for(var c=0;c<2;c++){var d=b.getChannelData(c);for(var i=0;i<n;i++)d[i]=(Math.random()*2-1)*Math.pow(1-i/n,2.6)}return b}
+function noise(){var b=ctx.createBuffer(1,ctx.sampleRate*2,ctx.sampleRate),d=b.getChannelData(0);for(var i=0;i<d.length;i++)d[i]=Math.random()*2-1;return b}
+function init(){ctx=new (window.AudioContext||window.webkitAudioContext)();master=ctx.createGain();master.gain.value=0;
+ var comp2=ctx.createDynamicsCompressor();master.connect(comp2);comp2.connect(ctx.destination);
+ rev=ctx.createConvolver();rev.buffer=imp(3.4);var rg=ctx.createGain();rg.gain.value=0.32;rev.connect(rg);rg.connect(master);
+ dry=ctx.createGain();dry.gain.value=0.85;dry.connect(master);nb=noise()}
+function out(node,wet){node.connect(dry);if(wet){var g=ctx.createGain();g.gain.value=wet;node.connect(g);g.connect(rev)}}
+function env(g,t,a,peak,hold,r){g.gain.setValueAtTime(0.0001,t);g.gain.exponentialRampToValueAtTime(peak,t+a);g.gain.setValueAtTime(peak,t+a+hold);g.gain.exponentialRampToValueAtTime(0.0001,t+a+hold+r)}
+function pad(notes,t){var lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.setValueAtTime(500,t);lp.frequency.linearRampToValueAtTime(1300,t+BARL*0.6);lp.Q.value=0.7;var g=ctx.createGain();env(g,t,0.5,0.07,BARL-0.7,1.2);lp.connect(g);out(g,0.9);
+ notes.forEach(function(m){[-7,7].forEach(function(dt){var o=ctx.createOscillator();o.type='sawtooth';o.frequency.value=f(m);o.detune.value=dt;o.connect(lp);o.start(t);o.stop(t+BARL+1.5)})})}
+function bass(m,t,d){var o=ctx.createOscillator(),g=ctx.createGain(),lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=260;o.type='sawtooth';o.frequency.value=f(m-24);env(g,t,0.01,0.22,d*0.5,d*0.45);o.connect(lp);lp.connect(g);out(g,0);o.start(t);o.stop(t+d+0.1)}
+function kick(t,v){var o=ctx.createOscillator(),g=ctx.createGain();o.frequency.setValueAtTime(130,t);o.frequency.exponentialRampToValueAtTime(42,t+0.13);env(g,t,0.004,v,0.02,0.32);o.connect(g);out(g,0.05);o.start(t);o.stop(t+0.45)}
+function hat(t,v){var s=ctx.createBufferSource();s.buffer=nb;var hp=ctx.createBiquadFilter();hp.type='highpass';hp.frequency.value=7500;var g=ctx.createGain();env(g,t,0.002,v,0.005,0.05);s.connect(hp);hp.connect(g);out(g,0.15);s.start(t,Math.random());s.stop(t+0.1)}
+function snare(t){var s=ctx.createBufferSource();s.buffer=nb;var bp=ctx.createBiquadFilter();bp.type='bandpass';bp.frequency.value=1800;bp.Q.value=0.8;var g=ctx.createGain();env(g,t,0.002,0.16,0.01,0.18);s.connect(bp);bp.connect(g);out(g,0.5);s.start(t,Math.random());s.stop(t+0.3)}
+function pluck(m,t,v){var o=ctx.createOscillator(),g=ctx.createGain(),lp=ctx.createBiquadFilter();o.type='triangle';o.frequency.value=f(m+12);lp.type='lowpass';lp.frequency.value=2600;env(g,t,0.004,v,0.01,0.28);o.connect(lp);lp.connect(g);out(g,0.45);o.start(t);o.stop(t+0.4)}
+function scheduleBar(t){var c=CH[bar%4],full=bar>=2;pad(c,t);
+ for(var b=0;b<4;b++){var bt=t+b*BEAT;if(full||b%2===0)kick(bt,b%2===0?0.75:0.45);if(full&&(b===1||b===3))snare(bt);bass(c[0],bt,BEAT*0.9);hat(bt+BEAT/2,0.05);if(full)hat(bt+BEAT/4*3,0.025)}
+ if(bar>=1){var seq=[0,1,2,3,2,1,3,2];for(var k=0;k<8;k++)pluck(c[seq[k]],t+k*BEAT/2,k%2?0.035:0.05)}
+ bar++}
+function loop(){while(nextBar<ctx.currentTime+1.2){scheduleBar(nextBar);nextBar+=BARL}}
+// efeitos por etapa
+function sweepNoise(t,f0,f1,d,v,type){var s=ctx.createBufferSource();s.buffer=nb;s.loop=true;var fl=ctx.createBiquadFilter();fl.type=type||'bandpass';fl.Q.value=1.2;fl.frequency.setValueAtTime(f0,t);fl.frequency.exponentialRampToValueAtTime(f1,t+d);var g=ctx.createGain();env(g,t,d*0.35,v,d*0.15,d*0.5);s.connect(fl);fl.connect(g);out(g,0.4);s.start(t);s.stop(t+d+0.2)}
+function tone(type,fr,t,a,v,h,r,wet,lpf){var o=ctx.createOscillator(),g=ctx.createGain();o.type=type;o.frequency.value=fr;var n=o;if(lpf){var lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=lpf;o.connect(lp);n=lp}env(g,t,a,v,h,r);n.connect(g);out(g,wet);o.start(t);o.stop(t+a+h+r+0.1)}
+var SFX={
+ 1:function(t){tone('sine',1320,t,0.005,0.12,0.05,1.2,1);tone('sine',1320,t+0.9,0.005,0.05,0.05,1,1)},
+ 2:function(t){sweepNoise(t,300,500,0.5,0.12);tone('triangle',310,t+0.05,0.002,0.12,0.02,0.6,0.8);tone('triangle',465,t+0.32,0.002,0.08,0.02,0.5,0.8)},
+ 3:function(t){sweepNoise(t,70,160,2.2,0.35,'lowpass');tone('sawtooth',55,t,0.4,0.08,0.9,0.9,0.1,180)},
+ 4:function(t){[98,147].forEach(function(fr){tone('sawtooth',fr,t,0.12,0.09,1.3,0.7,0.8,900)})},
+ 5:function(t){sweepNoise(t,250,3200,2,0.22)},
+ 6:function(t){kick(t,0.9);sweepNoise(t,2500,1500,0.15,0.18);tone('square',220,t,0.002,0.03,0.02,0.2,0.6,900)},
+ 7:function(t){sweepNoise(t,4000,2500,0.7,0.12,'highpass');tone('sine',1047,t+0.5,0.005,0.08,0.05,0.9,1);tone('sine',1568,t+0.68,0.005,0.07,0.05,1.1,1)}
+};
+function curScene(){var vh=window.innerHeight;if(window.innerWidth<=900){var els=document.querySelectorAll('[data-scene]');for(var i=0;i<els.length;i++){var r=els[i].getBoundingClientRect();if(r.top<vh*0.55&&r.bottom>vh*0.45)return +els[i].getAttribute('data-scene')}return 0}
+ var sec=document.getElementById('processo').getBoundingClientRect();if(sec.bottom<vh*0.5||sec.top>vh*0.5)return 0;var p=comp?comp.state.p:0;return p<0.14?1:p<0.26?2:p<0.50?3:p<0.63?4:p<0.75?5:p<0.86?6:7}
+function watch(){if(!on)return;var s=curScene();if(s&&s!==last){var fx=SFX[s];if(fx)fx(ctx.currentTime+0.05)}last=s}
+window.addEventListener('scroll',function(){if(on)requestAnimationFrame(watch)},{passive:true});
+btn.addEventListener('click',function(){if(!ctx)init();if(ctx.state==='suspended')ctx.resume();on=!on;var t=ctx.currentTime;
+ master.gain.cancelScheduledValues(t);master.gain.setValueAtTime(master.gain.value,t);master.gain.linearRampToValueAtTime(on?0.55:0,t+(on?1.2:0.5));
+ if(on){if(!timer){nextBar=t+0.1;bar=0;timer=setInterval(loop,200);loop()}last=curScene()}else{setTimeout(function(){if(!on&&timer){clearInterval(timer);timer=null}},700)}
+ btn.classList.toggle('on',on);btn.setAttribute('aria-pressed',on?'true':'false');btn.querySelector('.lbl').textContent=on?'SOM LIGADO':'LIGAR SOM'});
+document.addEventListener('visibilitychange',function(){if(!ctx)return;if(document.hidden)ctx.suspend();else if(on)ctx.resume()});
 })();
 </script>
 </body>
