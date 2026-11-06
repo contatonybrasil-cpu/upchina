@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>UP China — Assessoria para importação da China</title>
+<meta name="description" content="A UP China cuida de cada etapa da sua importação: encontra o fornecedor, visita a fábrica, organiza o embarque, o desembaraço e entrega na sua empresa.">
+<meta property="og:title" content="UP China — Da fábrica na China até a sua empresa">
+<meta property="og:description" content="Assessoria completa para importação da China e imersões com empresários.">
+<meta property="og:image" content="logo.png">
+<meta name="theme-color" content="#0C0B0B">
+<link rel="icon" href="logo.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap">
+<style>
+body{margin:0;background:#0C0B0B}
+a{color:#F3F1EC}a:hover{color:#F2B33D}
+.cloud{position:absolute;border-radius:50%;background:#FFFFFF;filter:blur(30px)}
+input:focus{outline:2px solid #F2B33D;outline-offset:2px}
+</style>
+
+<style>
+@media (max-width: 760px){
+ header nav{display:none!important}
+ header a{white-space:nowrap!important}
+ header a span{font-size:18px!important}
+ header > div > a:last-child{font-size:11px!important;padding:0 12px!important;height:38px!important}
+ header img{width:30px!important;height:30px!important}
+ .sctext{left:18px!important;right:18px!important;top:56px!important;max-width:none!important}
+ .sctext h1{font-size:46px!important}
+ .sctext h2{font-size:38px!important;min-height:2.6em!important}
+ .sctext p{font-size:14px!important;margin-top:10px!important}
+ .sctext ul{margin-top:12px!important;gap:6px!important}
+ .sctext li{font-size:13px!important}
+ .v-radar{width:118vw!important;right:-30%!important;top:72%!important}
+ .v-fact{width:112vw!important;right:-10%!important;bottom:12%!important}
+ .v-stack{width:118vw!important;right:-12%!important;bottom:10%!important}
+ .v-ship{left:50%!important;width:34vw!important}
+ .v-docs{width:84vw!important;right:8%!important;top:70%!important;height:44%!important}
+ .v-plane{left:50%!important;width:90vw!important}
+ .v-route{bottom:64px!important}
+ .pbar{grid-template-columns:repeat(7,minmax(0,1fr))!important;gap:4px!important}
+ .pbar li{font-size:0!important;padding-top:0!important}
+ .imm{height:auto!important}
+ .imm-stick{position:relative!important;top:0!important;height:auto!important;min-height:0!important}
+ #contato h2,#etapas h2{font-size:48px!important}
+}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<template id="tpl">
+<div style="font-family: 'Archivo', system-ui, sans-serif; color: #F3F1EC; background: #0C0B0B; min-width: 0">
+
+  <!-- DEFINIÇÕES 3D COMPARTILHADAS -->
+  <svg width="0" height="0" aria-hidden="true" style="position: absolute; width: 0; height: 0">
+    <defs>
+      <pattern id="up-rib" width="12" height="10" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="5" height="10" fill="#000000" fill-opacity="0.24"></rect><rect x="5" y="0" width="1.4" height="10" fill="#FFFFFF" fill-opacity="0.2"></rect></pattern>
+      <pattern id="up-ribh" width="10" height="7" patternUnits="userSpaceOnUse"><rect x="0" y="0" width="10" height="2.4" fill="#000000" fill-opacity="0.2"></rect></pattern>
+      <linearGradient id="up-vshade" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF" stop-opacity="0.2"></stop><stop offset="0.5" stop-color="#FFFFFF" stop-opacity="0"></stop><stop offset="1" stop-color="#000000" stop-opacity="0.32"></stop></linearGradient>
+      <linearGradient id="up-cab" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="0.55" stop-color="#E4E3DE"></stop><stop offset="1" stop-color="#A9A8A2"></stop></linearGradient>
+      <linearGradient id="up-glass" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#16212B"></stop><stop offset="0.45" stop-color="#6F8799"></stop><stop offset="0.55" stop-color="#2A3A48"></stop><stop offset="1" stop-color="#101820"></stop></linearGradient>
+      <linearGradient id="up-chrome" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="0.35" stop-color="#9DA3A9"></stop><stop offset="0.6" stop-color="#F1F2F3"></stop><stop offset="1" stop-color="#6B7076"></stop></linearGradient>
+      <radialGradient id="up-tire" cx="0.45" cy="0.4" r="0.6"><stop offset="0" stop-color="#3A3A3A"></stop><stop offset="1" stop-color="#090909"></stop></radialGradient>
+      <radialGradient id="up-rim" cx="0.4" cy="0.35" r="0.7"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#7C7F83"></stop></radialGradient>
+      <linearGradient id="up-hull" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#141B24"></stop><stop offset="0.5" stop-color="#46525F"></stop><stop offset="1" stop-color="#141B24"></stop></linearGradient>
+      <linearGradient id="up-fuse" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#AEB5BD"></stop><stop offset="0.42" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#9AA2AB"></stop></linearGradient>
+      <linearGradient id="up-wing" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#BCC3CA"></stop></linearGradient>
+      <linearGradient id="up-cyl" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5A5A58"></stop><stop offset="0.4" stop-color="#D8D7D2"></stop><stop offset="1" stop-color="#4A4A48"></stop></linearGradient>
+      <linearGradient id="up-wall" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#D9D7D1"></stop><stop offset="1" stop-color="#A7A59F"></stop></linearGradient>
+      <linearGradient id="up-win" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#2C3E50"></stop><stop offset="0.5" stop-color="#8FA6B8"></stop><stop offset="1" stop-color="#22313F"></stop></linearGradient>
+      <filter id="up-blur10" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="10"></feGaussianBlur></filter>
+      <filter id="up-blur4" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"></feGaussianBlur></filter>
+      <filter id="up-glow" x="-100%" y="-100%" width="300%" height="300%"><feGaussianBlur stdDeviation="6"></feGaussianBlur></filter>
+
+      <!-- container isométrico: cor vem de style="color:" no <use> -->
+      <symbol id="up-box" viewBox="0 0 300 300" overflow="visible">
+        <polygon points="14,186 222,306 309,256 101,136" fill="#000000" opacity="0.45" filter="url(#up-blur10)"></polygon>
+        <g transform="matrix(0.866 0.5 0 1 0 170)">
+          <rect x="0" y="-100" width="240" height="100" fill="currentColor"></rect>
+          <rect x="0" y="-100" width="240" height="100" fill="url(#up-rib)"></rect>
+          <rect x="0" y="-100" width="240" height="100" fill="url(#up-vshade)"></rect>
+          <rect x="0" y="-100" width="240" height="7" fill="#000000" fill-opacity="0.28"></rect>
+          <rect x="0" y="-7" width="240" height="7" fill="#000000" fill-opacity="0.38"></rect>
+          <rect x="0" y="-100" width="240" height="100" fill="none" stroke="#000000" stroke-opacity="0.4" stroke-width="1.5"></rect>
+        </g>
+        <g transform="matrix(0.866 -0.5 0 1 208 290)">
+          <rect x="0" y="-100" width="100" height="100" fill="currentColor"></rect>
+          <rect x="0" y="-100" width="100" height="100" fill="#000000" fill-opacity="0.34"></rect>
+          <line x1="50" y1="-96" x2="50" y2="-4" stroke="#000000" stroke-opacity="0.55" stroke-width="2"></line>
+          <line x1="16" y1="-94" x2="16" y2="-6" stroke="#000000" stroke-opacity="0.45" stroke-width="2.4"></line>
+          <line x1="36" y1="-94" x2="36" y2="-6" stroke="#000000" stroke-opacity="0.45" stroke-width="2.4"></line>
+          <line x1="64" y1="-94" x2="64" y2="-6" stroke="#000000" stroke-opacity="0.45" stroke-width="2.4"></line>
+          <line x1="84" y1="-94" x2="84" y2="-6" stroke="#000000" stroke-opacity="0.45" stroke-width="2.4"></line>
+          <rect x="0" y="-100" width="100" height="100" fill="none" stroke="#000000" stroke-opacity="0.45" stroke-width="1.5"></rect>
+        </g>
+        <polygon points="0,70 208,190 294.6,140 86.6,20" fill="currentColor"></polygon>
+        <polygon points="0,70 208,190 294.6,140 86.6,20" fill="#FFFFFF" fill-opacity="0.24"></polygon>
+        <polygon points="0,70 208,190 294.6,140 86.6,20" fill="none" stroke="#000000" stroke-opacity="0.35" stroke-width="1.5"></polygon>
+      </symbol>
+
+      <!-- caminhão de lado com container UP CHINA -->
+      <symbol id="up-truck" viewBox="0 0 900 260" overflow="visible">
+        <ellipse cx="450" cy="236" rx="470" ry="14" fill="#000000" opacity="0.5" filter="url(#up-blur4)"></ellipse>
+        <rect x="20" y="22" width="600" height="168" fill="#B5121B"></rect>
+        <rect x="20" y="22" width="600" height="168" fill="url(#up-rib)"></rect>
+        <rect x="20" y="22" width="600" height="168" fill="url(#up-vshade)"></rect>
+        <rect x="20" y="22" width="600" height="8" fill="#000000" fill-opacity="0.3"></rect>
+        <rect x="20" y="182" width="600" height="8" fill="#000000" fill-opacity="0.4"></rect>
+        <text x="320" y="118" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="64" fill="#FFFFFF" style="font-stretch: 70%">UP CHINA</text>
+        <text x="320" y="146" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#F2B33D" letter-spacing="3">ASSESSORIA PARA IMPORTAÇÃO</text>
+        <rect x="10" y="190" width="770" height="14" fill="#141414"></rect>
+        <rect x="430" y="204" width="10" height="26" fill="#2A2A2A"></rect>
+        <path d="M680 4 L700 4 Q812 4 818 38 L680 38 Z" fill="#E7E6E1" stroke="#9B9A95"></path>
+        <path d="M650 202 L650 72 Q650 40 682 38 L802 38 Q842 38 852 82 L870 152 L874 202 Z" fill="url(#up-cab)" stroke="#8D8C87" stroke-width="2"></path>
+        <path d="M760 52 L812 52 Q827 52 833 70 L844 120 L760 120 Z" fill="url(#up-glass)"></path>
+        <path d="M672 56 L744 56 L744 120 L672 120 Z" fill="url(#up-glass)" opacity="0.92"></path>
+        <line x1="752" y1="44" x2="752" y2="196" stroke="#8D8C87" stroke-width="2"></line>
+        <rect x="838" y="176" width="44" height="26" rx="3" fill="url(#up-chrome)"></rect>
+        <rect x="856" y="146" width="20" height="12" rx="2" fill="#FFF3C4"></rect>
+        <rect x="680" y="176" width="66" height="26" rx="11" fill="url(#up-chrome)"></rect>
+        <rect x="642" y="16" width="9" height="160" rx="3" fill="url(#up-chrome)"></rect>
+        <rect x="610" y="190" width="12" height="16" fill="#F2B33D"></rect>
+        <g transform="translate(96 206)"><circle r="30" fill="url(#up-tire)"></circle><circle r="17" fill="url(#up-rim)"></circle><circle r="6" fill="#4A4C50"></circle></g>
+        <g transform="translate(160 206)"><circle r="30" fill="url(#up-tire)"></circle><circle r="17" fill="url(#up-rim)"></circle><circle r="6" fill="#4A4C50"></circle></g>
+        <g transform="translate(224 206)"><circle r="30" fill="url(#up-tire)"></circle><circle r="17" fill="url(#up-rim)"></circle><circle r="6" fill="#4A4C50"></circle></g>
+        <g transform="translate(702 206)"><circle r="30" fill="url(#up-tire)"></circle><circle r="17" fill="url(#up-rim)"></circle><circle r="6" fill="#4A4C50"></circle></g>
+        <g transform="translate(818 206)"><circle r="30" fill="url(#up-tire)"></circle><circle r="17" fill="url(#up-rim)"></circle><circle r="6" fill="#4A4C50"></circle></g>
+      </symbol>
+    </defs>
+  </svg>
+
+  <!-- HEADER -->
+  <header style="position: sticky; top: 0; z-index: 30; background: #0C0B0B; border-bottom: 1px solid #2A2826">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 0 28px; height: 60px; display: flex; align-items: center; justify-content: space-between; gap: 20px">
+      <a href="#topo" style="display: flex; align-items: center; gap: 12px; text-decoration: none">
+        <img src="logo.png" alt="" style="width: 36px; height: 36px; border-radius: 50%; display: block">
+        <span style="font-weight: 900; font-stretch: 75%; letter-spacing: 0.02em; font-size: 22px">UP CHINA</span>
+      </a>
+      <nav aria-label="Principal" style="display: flex; gap: 26px; flex-wrap: wrap; font-size: 13px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em">
+        <a href="#processo" style="text-decoration: none">Processo</a>
+        <a href="#etapas" style="text-decoration: none">Etapas</a>
+        <a href="#imersao" style="text-decoration: none">Imersão</a>
+        <a href="#contato" style="text-decoration: none">Contato</a>
+      </nav>
+      <a href="https://beacons.ai/upchina" style="background: #B5121B; color: #FFFFFF; text-decoration: none; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 0 18px; height: 42px; display: flex; align-items: center">Quero importar</a>
+    </div>
+  </header>
+
+  <!-- HISTÓRIA -->
+  <section id="processo" ref="{{setSec}}" style="position: relative; height: 12800px">
+    <div id="topo" ref="{{setStick}}" style="position: sticky; top: 61px; height: min(calc(100vh - 61px), 900px); min-height: 580px; overflow: hidden; background: #0C0B0B">
+
+      <!-- ===== 01 FORNECEDOR: radar ===== -->
+      <div style="position: absolute; inset: 0; opacity: {{c1}}; background: #0C0B0B">
+        <div class="v-radar" style="position: absolute; right: -4%; top: 52%; width: min(64vw, 860px); aspect-ratio: 1 / 1; transform: translateY(-50%) perspective(1500px) rotateX(56deg) rotateZ(-18deg)">
+          <svg viewBox="0 0 1000 1000" role="img" aria-label="Radar de busca de fornecedores na China" style="width: 100%; height: 100%; display: block; overflow: visible">
+            <circle cx="500" cy="500" r="470" fill="#141212" stroke="#3A2A2A" stroke-width="2"></circle>
+            <circle cx="500" cy="500" r="350" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="2"></circle>
+            <circle cx="500" cy="500" r="230" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="2"></circle>
+            <circle cx="500" cy="500" r="110" fill="none" stroke="#FFFFFF" stroke-opacity="0.08" stroke-width="2"></circle>
+            <line x1="30" y1="500" x2="970" y2="500" stroke="#FFFFFF" stroke-opacity="0.07"></line>
+            <line x1="500" y1="30" x2="500" y2="970" stroke="#FFFFFF" stroke-opacity="0.07"></line>
+            <g transform="rotate({{sweep}} 500 500)">
+              <path d="M500 500 L970 500 A470 470 0 0 0 906 265 Z" fill="#B5121B" fill-opacity="0.28"></path>
+              <line x1="500" y1="500" x2="970" y2="500" stroke="#F2B33D" stroke-width="3"></line>
+            </g>
+            <sc-for list="{{dots}}" as="d" hint-placeholder-count="0">
+              <circle cx="{{d.x}}" cy="{{d.y}}" r="{{d.halo}}" fill="{{d.c}}" opacity="{{d.ho}}" filter="url(#up-glow)"></circle>
+              <circle cx="{{d.x}}" cy="{{d.y}}" r="{{d.r}}" fill="{{d.c}}" opacity="{{d.o}}"></circle>
+            </sc-for>
+            <sc-for list="{{finals}}" as="f" hint-placeholder-count="0">
+              <circle cx="{{f.x}}" cy="{{f.y}}" r="26" fill="none" stroke="{{f.c}}" stroke-width="4" opacity="{{f.o}}"></circle>
+              <text x="{{f.lx}}" y="{{f.ly}}" font-family="JetBrains Mono, monospace" font-size="26" fill="#F3F1EC" opacity="{{f.o}}">{{f.label}}</text>
+            </sc-for>
+          </svg>
+        </div>
+        <!-- hero -->
+        <div class="sctext" style="position: absolute; left: 28px; top: 9%; max-width: 760px; opacity: {{heroOp}}; transform: translateY({{heroY}}px)">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">ASSESSORIA PARA IMPORTAÇÃO DA CHINA</div>
+          <h1 style="margin: 18px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(56px, 8.4vw, 136px); line-height: 0.86; letter-spacing: -0.01em; text-transform: uppercase">Da fábrica na China<br>até a <span style="color: #E2202B">sua empresa.</span></h1>
+          <p style="margin: 24px 0 0; max-width: 470px; font-size: 17px; line-height: 1.5; color: #C9C5BE">A UP China cuida de cada etapa da sua importação. Role a página e veja o caminho da sua carga.</p>
+        </div>
+        <div class="sctext" style="position: absolute; left: 28px; top: 14%; max-width: 460px; opacity: {{s1TextOp}}">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">01 — FORNECEDOR</div>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s1Title}}</h2>
+          <p style="margin: 18px 0 0; font-size: 16px; line-height: 1.5; color: #C9C5BE">Pesquisamos, comparamos e negociamos com fabricantes chineses até chegar no parceiro certo para o seu produto.</p>
+          <div style="display: flex; gap: 8px; margin-top: 22px; flex-wrap: wrap">
+            <sc-for list="{{s1steps}}" as="s" hint-placeholder-count="3">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 8px 12px; border: 1px solid {{s.b}}; background: {{s.bg}}; color: {{s.fg}}">{{s.t}}</span>
+            </sc-for>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== 02 FÁBRICA ===== -->
+      <div style="position: absolute; inset: 0; opacity: {{c2}}; background: #ECEAE5; color: #0C0B0B; pointer-events: none">
+        <svg viewBox="0 0 900 600" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Fábrica sendo inspecionada" class="v-fact" style="position: absolute; right: 2%; bottom: 10%; width: min(64vw, 900px); overflow: visible">
+          <polygon points="60,290 441,510 631,400 250,180" fill="#000000" opacity="0.35" filter="url(#up-blur10)" transform="translate(18 18)"></polygon>
+          <g transform="matrix(0.866 0.5 0 1 40 280)">
+            <rect x="0" y="-110" width="440" height="110" fill="url(#up-wall)"></rect>
+            <rect x="0" y="-110" width="440" height="110" fill="#000000" fill-opacity="0.08"></rect>
+            <sc-for list="{{fwin}}" as="w" hint-placeholder-count="0">
+              <rect x="{{w}}" y="-92" width="44" height="20" fill="url(#up-win)" stroke="#5A5A56" stroke-width="1"></rect>
+            </sc-for>
+            <rect x="40" y="-58" width="70" height="58" fill="#3A3A38"></rect>
+            <rect x="40" y="-58" width="70" height="58" fill="url(#up-ribh)"></rect>
+            <rect x="150" y="-58" width="70" height="58" fill="#3A3A38"></rect>
+            <rect x="150" y="-58" width="70" height="58" fill="url(#up-ribh)"></rect>
+            <rect x="260" y="-58" width="70" height="58" fill="#B5121B"></rect>
+            <rect x="260" y="-58" width="70" height="58" fill="url(#up-ribh)"></rect>
+            <rect x="0" y="-110" width="440" height="110" fill="none" stroke="#6E6C67" stroke-width="1.5"></rect>
+          </g>
+          <g transform="matrix(0.866 -0.5 0 1 421 500)">
+            <rect x="0" y="-110" width="220" height="110" fill="#8E8C86"></rect>
+            <rect x="80" y="-60" width="60" height="60" fill="#2E2E2C"></rect>
+            <rect x="0" y="-110" width="220" height="110" fill="none" stroke="#5E5C57" stroke-width="1.5"></rect>
+          </g>
+          <polygon points="40,170 421,390 611.5,280 230.5,60" fill="#C7C5BF" stroke="#7C7A75"></polygon>
+          <sc-for list="{{teeth}}" as="t" hint-placeholder-count="0">
+            <polygon points="{{t.slope}}" fill="#E2E0DA" stroke="#8A8882" stroke-width="1"></polygon>
+            <polygon points="{{t.glass}}" fill="url(#up-win)" stroke="#5A5A56" stroke-width="1"></polygon>
+            <polygon points="{{t.tri}}" fill="#BDBBB5" stroke="#8A8882" stroke-width="1"></polygon>
+          </sc-for>
+          <g transform="translate(470 120)">
+            <rect x="-16" y="-170" width="32" height="200" fill="url(#up-cyl)"></rect>
+            <ellipse cx="0" cy="-170" rx="16" ry="6" fill="#3A3A38"></ellipse>
+            <rect x="-16" y="-150" width="32" height="10" fill="#B5121B"></rect>
+          </g>
+          <g transform="translate(530 150)">
+            <rect x="-13" y="-140" width="26" height="170" fill="url(#up-cyl)"></rect>
+            <ellipse cx="0" cy="-140" rx="13" ry="5" fill="#3A3A38"></ellipse>
+            <rect x="-13" y="-122" width="26" height="8" fill="#B5121B"></rect>
+          </g>
+          <sc-for list="{{smoke}}" as="s" hint-placeholder-count="0">
+            <circle cx="{{s.x}}" cy="{{s.y}}" r="{{s.r}}" fill="#9E9C97" opacity="{{s.o}}" filter="url(#up-blur10)"></circle>
+          </sc-for>
+          <use href="#up-box" x="560" y="330" width="170" height="170" style="color: #B5121B"></use>
+          <use href="#up-box" x="650" y="380" width="170" height="170" style="color: #F2B33D"></use>
+          <line x1="{{scanX}}" y1="20" x2="{{scanX}}" y2="560" stroke="#F2B33D" stroke-width="3" opacity="{{scanO}}"></line>
+          <line x1="{{scanX}}" y1="20" x2="{{scanX}}" y2="560" stroke="#F2B33D" stroke-width="18" opacity="{{scanO2}}" filter="url(#up-glow)"></line>
+        </svg>
+        <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 440px">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #8E0E14">02 — FÁBRICA</div>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s2Title}}</h2>
+          <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.5; color: #3B3934">Nosso time visita a fábrica pessoalmente antes de você fechar negócio.</p>
+          <ul style="list-style: none; margin: 22px 0 0; padding: 0; display: flex; flex-direction: column; gap: 10px">
+            <sc-for list="{{checks}}" as="c" hint-placeholder-count="4">
+              <li style="display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 600; opacity: {{c.o}}">
+                <span style="width: 24px; height: 24px; flex: 0 0 24px; border: 2px solid #0C0B0B; background: {{c.bg}}; display: flex; align-items: center; justify-content: center">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity: {{c.tick}}"><path d="M5 12l5 5 9-10"></path></svg>
+                </span>{{c.t}}
+              </li>
+            </sc-for>
+          </ul>
+        </div>
+      </div>
+
+      <!-- ===== 03 CONSOLIDAÇÃO ===== -->
+      <div style="position: absolute; inset: 0; opacity: {{c3}}; background: #121010; pointer-events: none">
+        <svg viewBox="0 0 1000 820" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Containers sendo consolidados no porto" class="v-stack" style="position: absolute; right: 0; bottom: 4%; width: min(66vw, 980px); overflow: visible">
+          <polygon points="80,560 560,840 900,640 420,360" fill="#1E1B1A"></polygon>
+          <polygon points="80,560 560,840 900,640 420,360" fill="none" stroke="#3A3532" stroke-width="2"></polygon>
+          <sc-for list="{{stack}}" as="b" hint-placeholder-count="0">
+            <use href="#up-box" x="{{b.x}}" y="{{b.y}}" width="300" height="300" style="color: {{b.c}}; opacity: {{b.o}}"></use>
+          </sc-for>
+        </svg>
+        <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 440px">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">03 — EMBARQUE</div>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s3Title}}</h2>
+          <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.5; color: #C9C5BE">Consolidação da carga, frete internacional, seguro e documentos de embarque organizados por nós.</p>
+        </div>
+      </div>
+
+      <!-- ===== 04 OCEANO ===== -->
+      <div style="position: absolute; inset: 0; opacity: {{c4}}; background: #0A2346; overflow: hidden; pointer-events: none">
+        <svg viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%">
+          <g transform="translate(0 {{waveY}})">
+            <sc-for list="{{waves}}" as="w" hint-placeholder-count="0">
+              <path d="{{w.d}}" fill="none" stroke="#FFFFFF" stroke-opacity="{{w.o}}" stroke-width="2" stroke-linecap="round"></path>
+            </sc-for>
+          </g>
+        </svg>
+        <div class="v-ship" style="position: absolute; left: 62%; top: 0; width: min(20vw, 260px); transform: translate(-50%, {{shipY}}px) scale({{shipS}}); transform-origin: 50% 0">
+          <svg viewBox="-120 -40 540 1340" role="img" aria-label="Navio porta-containers no oceano" style="width: 100%; display: block; overflow: visible">
+            <path d="M30 140 C -30 420 -70 900 -100 1300" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="16" filter="url(#up-blur4)"></path>
+            <path d="M270 140 C 330 420 370 900 400 1300" fill="none" stroke="#FFFFFF" stroke-opacity="0.5" stroke-width="16" filter="url(#up-blur4)"></path>
+            <path d="M150 1090 L150 1300" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="90" filter="url(#up-blur10)"></path>
+            <path d="M150 0 C 230 80 262 180 262 260 L 262 1040 Q 262 1092 150 1100 Q 38 1092 38 1040 L 38 260 C 38 180 70 80 150 0 Z" fill="#000000" opacity="0.4" filter="url(#up-blur10)" transform="translate(22 26)"></path>
+            <path d="M150 0 C 230 80 262 180 262 260 L 262 1040 Q 262 1092 150 1100 Q 38 1092 38 1040 L 38 260 C 38 180 70 80 150 0 Z" fill="url(#up-hull)"></path>
+            <path d="M150 24 C 220 96 246 186 246 262 L 246 1030 Q 246 1076 150 1082 Q 54 1076 54 1030 L 54 262 C 54 186 80 96 150 24 Z" fill="#7A2A22"></path>
+            <sc-for list="{{shipShadow}}" as="b" hint-placeholder-count="0">
+              <rect x="{{b.x}}" y="{{b.y}}" width="46" height="27" fill="#000000" opacity="0.45"></rect>
+            </sc-for>
+            <sc-for list="{{shipBoxes}}" as="b" hint-placeholder-count="0">
+              <rect x="{{b.x}}" y="{{b.y}}" width="46" height="27" fill="{{b.f}}"></rect>
+            </sc-for>
+            <g transform="translate(0 0)">
+              <sc-for list="{{shipBoxes}}" as="b" hint-placeholder-count="0">
+                <rect x="{{b.x}}" y="{{b.y}}" width="46" height="27" fill="url(#up-ribh)"></rect>
+              </sc-for>
+            </g>
+            <rect x="80" y="1000" width="148" height="66" fill="#000000" opacity="0.45" transform="translate(10 10)"></rect>
+            <rect x="80" y="1000" width="140" height="62" fill="#F1F0EC"></rect>
+            <rect x="80" y="1000" width="140" height="10" fill="#C9C7C1"></rect>
+            <rect x="96" y="1018" width="108" height="10" fill="#2C3E50"></rect>
+          </svg>
+        </div>
+        <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 460px; color: #FFFFFF">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">04 — FRETE MARÍTIMO</div>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s4Title}}</h2>
+          <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.5; color: #D5DEEA">Acompanhamos a carga em cada etapa da viagem e mantemos você informado até a chegada ao porto.</p>
+        </div>
+        <div class="v-route" style="position: absolute; left: 28px; right: 28px; bottom: 76px; display: flex; align-items: center; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #FFFFFF">
+          <span>CHINA</span>
+          <div style="flex: 1 1 auto; height: 2px; background: rgba(255,255,255,.25); position: relative">
+            <div style="position: absolute; left: 0; top: 0; height: 2px; width: {{seaPct}}%; background: #F2B33D"></div>
+            <div style="position: absolute; top: -6px; left: {{seaPct}}%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #F2B33D"></div>
+          </div>
+          <span>BRASIL</span>
+        </div>
+      </div>
+
+      <!-- ===== 05 AÉREO ===== -->
+      <div style="position: absolute; inset: 0; opacity: {{c5a}}; background: #7FA9D9; overflow: hidden; pointer-events: none">
+        <sc-for list="{{cloudsBack}}" as="c" hint-placeholder-count="0">
+          <div class="cloud" aria-hidden="true" style="left: {{c.x}}%; top: {{c.y}}%; width: {{c.w}}px; height: {{c.h}}px; opacity: {{c.o}}"></div>
+        </sc-for>
+        <div class="v-plane" style="position: absolute; left: 62%; top: {{planeTop}}%; width: min(48vw, 600px); transform: translate(-50%, -50%) rotate({{planeRot}}deg) scale({{planeS}})">
+          <svg viewBox="0 0 400 420" role="img" aria-label="Avião cargueiro visto de cima, sobrevoando as nuvens" style="width: 100%; display: block; overflow: visible">
+            <g transform="translate(60 80)" opacity="0.28" filter="url(#up-blur10)">
+              <path d="M200 18 C 216 18 224 54 224 96 L 224 340 C 224 372 212 392 200 398 C 188 392 176 372 176 340 L 176 96 C 176 54 184 18 200 18 Z M182 150 L30 250 L28 264 L182 222 Z M218 150 L370 250 L372 264 L218 222 Z M184 340 L120 378 L122 388 L186 370 Z M216 340 L280 378 L278 388 L214 370 Z" fill="#0E2A55"></path>
+            </g>
+            <path d="M182 150 L30 250 Q22 258 28 264 L182 222 Z" fill="url(#up-wing)" stroke="#8E99A5" stroke-width="1.5"></path>
+            <path d="M218 150 L370 250 Q378 258 372 264 L218 222 Z" fill="url(#up-wing)" stroke="#8E99A5" stroke-width="1.5"></path>
+            <path d="M40 244 L28 252 Q24 258 28 264 L44 260 Z" fill="#B5121B"></path>
+            <path d="M360 244 L372 252 Q376 258 372 264 L356 260 Z" fill="#B5121B"></path>
+            <line x1="182" y1="196" x2="60" y2="252" stroke="#8E99A5" stroke-width="1" opacity="0.6"></line>
+            <line x1="218" y1="196" x2="340" y2="252" stroke="#8E99A5" stroke-width="1" opacity="0.6"></line>
+            <rect x="96" y="176" width="20" height="46" rx="9" fill="url(#up-cyl)"></rect>
+            <rect x="284" y="176" width="20" height="46" rx="9" fill="url(#up-cyl)"></rect>
+            <rect x="136" y="160" width="16" height="38" rx="7" fill="url(#up-cyl)"></rect>
+            <rect x="248" y="160" width="16" height="38" rx="7" fill="url(#up-cyl)"></rect>
+            <path d="M184 340 L120 378 L122 388 L186 370 Z" fill="url(#up-wing)" stroke="#8E99A5" stroke-width="1.5"></path>
+            <path d="M216 340 L280 378 L278 388 L214 370 Z" fill="url(#up-wing)" stroke="#8E99A5" stroke-width="1.5"></path>
+            <path d="M200 18 C 216 18 224 54 224 96 L 224 340 C 224 372 212 392 200 398 C 188 392 176 372 176 340 L 176 96 C 176 54 184 18 200 18 Z" fill="url(#up-fuse)" stroke="#8E99A5" stroke-width="1.5"></path>
+            <path d="M190 44 L210 44 L207 58 L193 58 Z" fill="#22313F"></path>
+            <rect x="176" y="118" width="48" height="12" fill="#B5121B"></rect>
+            <rect x="176" y="130" width="48" height="4" fill="#F2B33D"></rect>
+            <rect x="197" y="330" width="6" height="66" rx="2" fill="#B5121B"></rect>
+          </svg>
+        </div>
+        <sc-for list="{{cloudsFront}}" as="c" hint-placeholder-count="0">
+          <div class="cloud" aria-hidden="true" style="left: {{c.x}}%; top: {{c.y}}%; width: {{c.w}}px; height: {{c.h}}px; opacity: {{c.o}}"></div>
+        </sc-for>
+        <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 460px; color: #0C0B0B">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #7A0A10">05 — FRETE AÉREO</div>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{airTitle}}</h2>
+          <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.5; color: #1E2B3A">Para amostras, reposições urgentes e cargas de alto valor, a mercadoria vem de avião.</p>
+        </div>
+        <div class="v-route" style="position: absolute; left: 28px; right: 28px; bottom: 76px; display: flex; align-items: center; gap: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #0C0B0B">
+          <span>CHINA</span>
+          <div style="flex: 1 1 auto; height: 2px; background: rgba(12,11,11,.2); position: relative">
+            <div style="position: absolute; left: 0; top: 0; height: 2px; width: {{airPct}}%; background: #B5121B"></div>
+            <div style="position: absolute; top: -6px; left: {{airPct}}%; width: 14px; height: 14px; margin-left: -7px; border-radius: 50%; background: #B5121B"></div>
+          </div>
+          <span>BRASIL</span>
+        </div>
+      </div>
+
+      <!-- ===== 06 DESEMBARAÇO ===== -->
+      <div style="position: absolute; inset: 0; opacity: {{c5}}; background: #7A0A10; overflow: hidden; pointer-events: none">
+        <div class="v-docs" style="position: absolute; right: 6%; top: 50%; width: min(52vw, 640px); height: min(70%, 560px); transform: translateY(-50%); perspective: 1400px">
+          <sc-for list="{{docs}}" as="d" hint-placeholder-count="4">
+            <div style="position: absolute; left: {{d.l}}%; top: {{d.t}}%; width: 56%; aspect-ratio: 0.72 / 1; background: #FBFAF6; color: #0C0B0B; box-shadow: 0 30px 60px rgba(0,0,0,.45), 0 4px 10px rgba(0,0,0,.3); padding: 20px; box-sizing: border-box; transform: translateY({{d.y}}px) rotateX(18deg) rotateZ({{d.r}}deg); opacity: {{d.o}}">
+              <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #7A0A10">{{d.kind}}</div>
+              <div style="margin-top: 8px; font-weight: 900; font-stretch: 75%; font-size: 22px; text-transform: uppercase; line-height: 1">{{d.title}}</div>
+              <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 8px">
+                <span style="display: block; height: 7px; width: 90%; background: #DAD7CF"></span>
+                <span style="display: block; height: 7px; width: 72%; background: #DAD7CF"></span>
+                <span style="display: block; height: 7px; width: 84%; background: #DAD7CF"></span>
+                <span style="display: block; height: 7px; width: 60%; background: #DAD7CF"></span>
+                <span style="display: block; height: 7px; width: 78%; background: #DAD7CF"></span>
+              </div>
+            </div>
+          </sc-for>
+          <div style="position: absolute; left: 38%; top: 34%; padding: 12px 22px; border: 6px solid #F2B33D; color: #F2B33D; font-weight: 900; font-stretch: 70%; font-size: clamp(40px, 4.6vw, 72px); letter-spacing: 0.04em; text-transform: uppercase; transform: rotate(-12deg) scale({{stampS}}); opacity: {{stampO}}; background: rgba(122,10,16,.35)">Liberado</div>
+        </div>
+        <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 440px; color: #FFFFFF">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">06 — DESEMBARAÇO</div>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.4vw, 88px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s5Title}}</h2>
+          <p style="margin: 16px 0 0; font-size: 16px; line-height: 1.5; color: #F1D6D7">Classificação fiscal, impostos e liberação aduaneira acompanhados pelo nosso time, sem surpresa no porto.</p>
+        </div>
+      </div>
+
+      <!-- ===== 06 ENTREGA ===== -->
+      <div style="position: absolute; inset: 0; opacity: {{c6}}; background: #ECEAE5; color: #0C0B0B; overflow: hidden">
+        <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: 0; height: 22%; background: #2A2826"></div>
+        <div aria-hidden="true" style="position: absolute; left: 0; right: 0; bottom: calc(11% - 2px); height: 4px; display: flex; gap: 50px; padding-left: 20px">
+          <sc-for list="{{lanes}}" as="l" hint-placeholder-count="0"><span style="flex: 0 0 70px; height: 4px; background: #F2B33D; opacity: 0.6"></span></sc-for>
+        </div>
+        <!-- prédio -->
+        <div style="position: absolute; right: 3%; bottom: 22%; width: {{bldW}}px">
+          <svg viewBox="0 0 420 380" role="img" aria-label="Sede da empresa do cliente" style="width: 100%; display: block; overflow: visible">
+            <rect x="10" y="20" width="420" height="370" fill="#000000" opacity="0.25" filter="url(#up-blur10)"></rect>
+            <rect x="0" y="0" width="420" height="380" fill="url(#up-wall)"></rect>
+            <rect x="0" y="0" width="420" height="16" fill="#8E8C86"></rect>
+            <sc-for list="{{bwin}}" as="w" hint-placeholder-count="0">
+              <rect x="{{w.x}}" y="{{w.y}}" width="70" height="56" fill="url(#up-win)" stroke="#6E6C67"></rect>
+            </sc-for>
+            <rect x="40" y="190" width="200" height="40" fill="#0C0B0B"></rect>
+            <text x="140" y="217" text-anchor="middle" font-family="Archivo, sans-serif" font-weight="900" font-size="22" fill="#F3F1EC" letter-spacing="2">SUA EMPRESA</text>
+            <rect x="30" y="250" width="220" height="130" fill="#1C1B1A"></rect>
+            <rect x="30" y="250" width="220" height="{{doorH}}" fill="#B9B7B1"></rect>
+            <rect x="30" y="250" width="220" height="{{doorH}}" fill="url(#up-ribh)"></rect>
+            <rect x="290" y="270" width="90" height="110" fill="url(#up-win)" stroke="#6E6C67"></rect>
+          </svg>
+        </div>
+        <!-- caminhão -->
+        <div style="position: absolute; left: 0; bottom: calc(22% - 8px); width: {{truckW}}px; transform: translateX({{truckX}}px)">
+          <svg viewBox="0 0 900 260" role="img" aria-label="Caminhão UP China chegando para a entrega" style="width: 100%; display: block; overflow: visible">
+            <use href="#up-truck" x="0" y="0" width="900" height="260"></use>
+            <g transform="translate(96 206) rotate({{wheelDeg}})"><circle cx="0" cy="-11" r="2.6" fill="#3A3C40"></circle><circle cx="10" cy="5" r="2.6" fill="#3A3C40"></circle><circle cx="-10" cy="5" r="2.6" fill="#3A3C40"></circle></g>
+            <g transform="translate(160 206) rotate({{wheelDeg}})"><circle cx="0" cy="-11" r="2.6" fill="#3A3C40"></circle><circle cx="10" cy="5" r="2.6" fill="#3A3C40"></circle><circle cx="-10" cy="5" r="2.6" fill="#3A3C40"></circle></g>
+            <g transform="translate(224 206) rotate({{wheelDeg}})"><circle cx="0" cy="-11" r="2.6" fill="#3A3C40"></circle><circle cx="10" cy="5" r="2.6" fill="#3A3C40"></circle><circle cx="-10" cy="5" r="2.6" fill="#3A3C40"></circle></g>
+            <g transform="translate(702 206) rotate({{wheelDeg}})"><circle cx="0" cy="-11" r="2.6" fill="#3A3C40"></circle><circle cx="10" cy="5" r="2.6" fill="#3A3C40"></circle><circle cx="-10" cy="5" r="2.6" fill="#3A3C40"></circle></g>
+            <g transform="translate(818 206) rotate({{wheelDeg}})"><circle cx="0" cy="-11" r="2.6" fill="#3A3C40"></circle><circle cx="10" cy="5" r="2.6" fill="#3A3C40"></circle><circle cx="-10" cy="5" r="2.6" fill="#3A3C40"></circle></g>
+          </svg>
+        </div>
+        <div class="sctext" style="position: absolute; left: 28px; top: 12%; max-width: 520px">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #8E0E14">07 — ENTREGA</div>
+          <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 68%; font-size: clamp(44px, 5.8vw, 96px); line-height: 0.88; text-transform: uppercase; min-height: 1.8em">{{s6Title}}</h2>
+          <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; opacity: {{ctaOp}}">
+            <a href="https://beacons.ai/upchina" style="background: #B5121B; color: #FFFFFF; text-decoration: none; font-weight: 700; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; height: 52px; padding: 0 24px; display: flex; align-items: center; gap: 10px">Quero importar
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- HUD -->
+      <div style="position: absolute; left: 28px; top: 18px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.08em; color: {{hud}}">{{hudLeft}}</div>
+      <div style="position: absolute; right: 28px; top: 14px; display: flex; gap: 14px; align-items: center">
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: {{hud}}">{{sceneNum}} / 07</span>
+        <button type="button" onClick="{{toggleAuto}}" aria-label="{{autoLabel}}" style="width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid {{hud}}; background: transparent; color: {{hud}}; display: flex; align-items: center; justify-content: center; cursor: pointer">
+          <sc-if value="{{auto}}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M8 5v14"></path><path d="M16 5v14"></path></svg></sc-if>
+          <sc-if value="{{notAuto}}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" aria-hidden="true"><path d="M7 4l12 8-12 8z"></path></svg></sc-if>
+        </button>
+      </div>
+      <ol class="pbar" aria-label="Etapas da importação" style="position: absolute; left: 28px; right: 28px; bottom: 16px; margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px">
+        <sc-for list="{{bar}}" as="b" hint-placeholder-count="7">
+          <li style="border-top: 3px solid {{b.line}}; padding-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: {{b.fg}}; white-space: nowrap; overflow: hidden; text-overflow: ellipsis">{{b.t}}</li>
+        </sc-for>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ETAPAS -->
+  <section id="etapas" style="background: #ECEAE5; color: #0C0B0B">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 96px 28px">
+      <div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px">
+        <h2 style="margin: 0; font-weight: 900; font-stretch: 68%; font-size: clamp(52px, 7vw, 116px); line-height: 0.86; text-transform: uppercase; max-width: 900px">Você foca no negócio.<br><span style="color: #B5121B">A gente cuida da importação.</span></h2>
+        <p style="margin: 0; max-width: 360px; font-size: 16px; line-height: 1.5; color: #3B3934">Sete etapas, um só time responsável do começo ao fim.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin-top: 56px; border-top: 1px solid #0C0B0B; border-left: 1px solid #0C0B0B">
+        <sc-for list="{{etapas}}" as="e" hint-placeholder-count="6">
+          <article style="padding: 28px; border-right: 1px solid #0C0B0B; border-bottom: 1px solid #0C0B0B; min-height: 230px; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+            <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8E0E14">{{e.n}}</span>
+            <div><h3 style="margin: 0; font-size: 30px; font-weight: 900; font-stretch: 72%; text-transform: uppercase; line-height: 1">{{e.t}}</h3><p style="margin: 10px 0 0; color: #3B3934; line-height: 1.5">{{e.d}}</p></div>
+          </article>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMERSÃO NA CHINA -->
+  <section class="imm" id="imersao" ref="{{setImm}}" style="position: relative; height: 3600px; background: #120606">
+    <div class="imm-stick" ref="{{setImmStick}}" style="position: sticky; top: 61px; height: min(calc(100vh - 61px), 900px); min-height: 640px; overflow: hidden">
+      <div aria-hidden="true" style="position: absolute; left: 0; right: 0; top: 46%; white-space: nowrap; font-weight: 900; font-stretch: 62%; font-size: clamp(160px, 26vw, 420px); line-height: 1; color: transparent; -webkit-text-stroke: 1.5px rgba(242,179,61,.16); transform: translateX({{immWordX}}px)">中国 IMERSÃO 中国 IMERSÃO</div>
+
+      <div style="max-width: 1440px; margin: 0 auto; height: 100%; box-sizing: border-box; padding: 40px 28px 32px; display: flex; flex-wrap: wrap; gap: 32px; position: relative">
+        <!-- texto -->
+        <div style="flex: 1 1 380px; min-width: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 24px">
+          <div>
+            <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; color: #F2B33D">EXPERIÊNCIA UP CHINA</div>
+            <h2 style="margin: 14px 0 0; font-weight: 900; font-stretch: 66%; font-size: clamp(56px, 7.4vw, 124px); line-height: 0.84; text-transform: uppercase; min-height: 1.7em">{{immTitle}}</h2>
+            <p style="margin: 20px 0 0; max-width: 440px; font-size: 17px; line-height: 1.5; color: #D8C9C6">Levamos empresários para dentro das feiras, fábricas e escritórios que movem o comércio mundial. Uma viagem guiada, do embarque ao último aperto de mão.</p>
+          </div>
+          <ol style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; perspective: 1200px">
+            <sc-for list="{{immCards}}" as="c" hint-placeholder-count="4">
+              <li style="background: {{c.bg}}; color: {{c.fg}}; padding: 16px; min-height: 112px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between; gap: 10px; transform-origin: 50% 0; transform: rotateX({{c.rx}}deg); opacity: {{c.o}}; box-shadow: 0 18px 40px rgba(0,0,0,.35)">
+                <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.08em; opacity: 0.8">{{c.n}}</span>
+                <span style="font-weight: 900; font-stretch: 72%; font-size: 22px; line-height: 1; text-transform: uppercase">{{c.t}}</span>
+                <span style="font-size: 13px; line-height: 1.4; opacity: 0.85">{{c.d}}</span>
+              </li>
+            </sc-for>
+          </ol>
+        </div>
+
+        <!-- voo + cartão de embarque -->
+        <div style="flex: 1.3 1 520px; min-width: 0; display: flex; flex-direction: column; justify-content: center; gap: 8px">
+          <svg viewBox="0 0 800 250" role="img" aria-label="Rota do voo de São Paulo até a China" style="width: 100%; display: block; overflow: visible">
+            <path d="M60 220 Q400 -70 740 220" fill="none" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2" stroke-dasharray="6 10"></path>
+            <path ref="{{setArc}}" d="M60 220 Q400 -70 740 220" fill="none" stroke="#F2B33D" stroke-width="3" stroke-dasharray="{{arcLen}}" stroke-dashoffset="{{arcOff}}"></path>
+            <circle cx="60" cy="220" r="7" fill="#F3F1EC"></circle>
+            <circle cx="740" cy="220" r="7" fill="#E2202B"></circle>
+            <circle cx="740" cy="220" r="18" fill="#E2202B" opacity="{{arrO}}" filter="url(#up-glow)"></circle>
+            <text x="60" y="246" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#F3F1EC">GRU · SÃO PAULO</text>
+            <text x="740" y="246" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="14" fill="#F3F1EC">CAN · GUANGZHOU</text>
+            <g transform="translate({{apx}} {{apy}}) rotate({{apr}})">
+              <path d="M0 -16 L3 -5 L16 3 L16 6 L3 3 L2 11 L7 14 L7 16 L0 14 L-7 16 L-7 14 L-2 11 L-3 3 L-16 6 L-16 3 L-3 -5 Z" fill="#FFFFFF" stroke="#0C0B0B" stroke-width="1"></path>
+            </g>
+          </svg>
+
+          <div style="perspective: 1600px; margin-top: 8px">
+            <div style="display: flex; flex-wrap: wrap; background: #F6F3EC; color: #0C0B0B; box-shadow: 0 50px 90px rgba(0,0,0,.55), 0 8px 20px rgba(0,0,0,.35); transform: translateY({{passY}}px) rotateX({{passRX}}deg) rotateY({{passRY}}deg) rotateZ({{passRZ}}deg); opacity: {{passO}}">
+              <div style="flex: 999 1 340px; min-width: 0; padding: 22px 24px; box-sizing: border-box; display: flex; flex-direction: column; gap: 18px">
+                <div style="display: flex; justify-content: space-between; align-items: center; gap: 12px">
+                  <span style="display: flex; align-items: center; gap: 10px"><img src="logo.png" alt="" style="width: 30px; height: 30px; border-radius: 50%"><span style="font-weight: 900; font-stretch: 75%; font-size: 18px">UP CHINA</span></span>
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; background: #B5121B; color: #FFFFFF; padding: 5px 9px">CARTÃO DE EMBARQUE</span>
+                </div>
+                <div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 12px">
+                  <div><div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6B6760">DE</div><div style="font-weight: 900; font-stretch: 70%; font-size: clamp(48px, 5vw, 72px); line-height: 0.9">GRU</div><div style="font-size: 13px; color: #3B3934">São Paulo</div></div>
+                  <svg width="56" height="24" viewBox="0 0 56 24" fill="none" stroke="#B5121B" stroke-width="2.4" aria-hidden="true"><path d="M2 12h50"></path><path d="M44 4l8 8-8 8"></path></svg>
+                  <div style="text-align: right"><div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6B6760">PARA</div><div style="font-weight: 900; font-stretch: 70%; font-size: clamp(48px, 5vw, 72px); line-height: 0.9; color: #B5121B">CAN</div><div style="font-size: 13px; color: #3B3934">Guangzhou, China</div></div>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; border-top: 1px dashed #B9B4AA; padding-top: 14px; font-family: 'JetBrains Mono', monospace; font-size: 12px">
+                  <div><div style="color: #6B6760; font-size: 10px">PASSAGEIRO</div><div style="margin-top: 4px; font-weight: 500">VOCÊ</div></div>
+                  <div><div style="color: #6B6760; font-size: 10px">TURMA</div><div style="margin-top: 4px; font-weight: 500">[MÊS/ANO]</div></div>
+                  <div><div style="color: #6B6760; font-size: 10px">ASSENTO</div><div style="margin-top: 4px; font-weight: 500">GARANTA O SEU</div></div>
+                </div>
+              </div>
+              <div style="flex: 1 1 150px; min-width: 0; padding: 22px 20px; box-sizing: border-box; border-left: 2px dashed #B9B4AA; background: #0C0B0B; color: #F3F1EC; display: flex; flex-direction: column; justify-content: space-between; gap: 14px">
+                <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #F2B33D">IMERSÃO NA CHINA</div>
+                <div style="display: flex; align-items: flex-end; gap: 2px; height: 70px" aria-hidden="true">
+                  <sc-for list="{{immBars}}" as="b" hint-placeholder-count="0"><span style="display: block; height: 100%; width: {{b.w}}px; margin-right: {{b.g}}px; background: #F3F1EC"></span></sc-for>
+                </div>
+                <a href="https://beacons.ai/upchina" style="background: #E2202B; color: #FFFFFF; text-decoration: none; font-weight: 800; font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; min-height: 44px; display: flex; align-items: center; justify-content: center; text-align: center; padding: 0 10px">Quero ir</a>
+              </div>
+            </div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #A39F98; margin-top: 14px; gap: 12px; flex-wrap: wrap">
+            <span>{{immStatus}}</span><span>{{immKm}}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato" style="background: #8E0E14; color: #FFFFFF">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 104px 28px; display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; align-items: flex-end">
+      <h2 style="margin: 0; font-weight: 900; font-stretch: 66%; font-size: clamp(60px, 9vw, 160px); line-height: 0.84; text-transform: uppercase; max-width: 1000px">Torne-se importador <span style="color: #F2B33D">do zero.</span></h2>
+      <div style="display: flex; flex-direction: column; gap: 12px; flex: 0 1 360px">
+        <p style="margin: 0; font-size: 16px; line-height: 1.5; color: #F6DADB">Conte o que você quer importar. A gente mostra o caminho.</p>
+        <a href="https://beacons.ai/upchina" style="background: #F2B33D; color: #0C0B0B; text-decoration: none; font-weight: 800; font-size: 14px; text-transform: uppercase; letter-spacing: 0.08em; height: 56px; padding: 0 24px; display: flex; align-items: center; justify-content: space-between">Falar com a UP China
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+  <footer style="background: #0C0B0B">
+    <div style="max-width: 1440px; margin: 0 auto; padding: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #A39F98">
+      <span style="display: flex; align-items: center; gap: 10px"><img src="logo.png" alt="UP China" style="width: 28px; height: 28px; border-radius: 50%">UP CHINA — ASSESSORIA PARA IMPORTAÇÃO</span>
+      <a href="https://www.instagram.com/upchina_oficial/">@upchina_oficial</a>
+      <span>CNPJ [00.000.000/0001-00]</span>
+    </div>
+  </footer>
+</div>
+</template>
+<script>
+class DCLogic{constructor(p){this.props=p||{};this.state={}}setState(o){Object.assign(this.state,typeof o==='function'?o(this.state):o);__sched()}forceUpdate(){__sched()}}
+
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { p: 0, q: 0, auto: false };
+    this.IMMBARS = [3,1,2,1,4,1,1,3,2,1,1,2,4,1,3,1,2,2,1,4,1,1,3].map((w, i) => ({ w: w, g: (i % 3) + 1 }));
+    this.IMMCARDS = [
+      { n: 'DIA 01', t: 'Feiras de negócios', d: 'Os maiores pavilhões de fornecedores do mundo.' },
+      { n: 'DIA 02', t: 'Dentro das fábricas', d: 'Linhas de produção vistas de perto.' },
+      { n: 'DIA 03', t: 'Rodadas com fornecedores', d: 'Negociação com tradução e apoio do time.' },
+      { n: 'DIA 04', t: 'Cultura e networking', d: 'Troca com outros empresários da turma.' }
+    ];
+    this.update = this.update.bind(this);
+    this.onScroll = () => { if (this.raf) return; this.raf = requestAnimationFrame(() => { this.raf = null; this.update(); }); };
+    let s = 11;
+    const rnd = () => { s = (s * 9301 + 49297) % 233280; return s / 233280; };
+    // radar
+    this.DOTS = [];
+    for (let i = 0; i < 70; i++) {
+      const a = rnd() * Math.PI * 2, d = Math.sqrt(rnd()) * 420;
+      this.DOTS.push({ x: 500 + Math.cos(a) * d, y: 500 + Math.sin(a) * d, k: rnd(), a: (a * 180 / Math.PI + 360) % 360 });
+    }
+    this.FINAL = [{ i: 7, label: 'GUANGDONG' }, { i: 31, label: 'ZHEJIANG' }, { i: 52, label: 'JIANGSU' }];
+    // fábrica
+    const P = (x, y) => x.toFixed(1) + ',' + y.toFixed(1);
+    const ux = 0.866, uy = 0.5, vx = 0.866, vy = -0.5;
+    const rx0 = 40, ry0 = 170;
+    this.TEETH = [];
+    const n = 6, seg = 440 / n, th = 46, W = 220;
+    for (let i = 0; i < n; i++) {
+      const a = i * seg, b = (i + 1) * seg;
+      const A = [rx0 + ux * a, ry0 + uy * a], B = [rx0 + ux * b, ry0 + uy * b];
+      const Av = [A[0] + vx * W, A[1] + vy * W], Bv = [B[0] + vx * W, B[1] + vy * W];
+      this.TEETH.push({
+        slope: [P(A[0], A[1]), P(Av[0], Av[1]), P(Bv[0], Bv[1] - th), P(B[0], B[1] - th)].join(' '),
+        glass: [P(B[0], B[1]), P(Bv[0], Bv[1]), P(Bv[0], Bv[1] - th), P(B[0], B[1] - th)].join(' '),
+        tri: [P(A[0], A[1]), P(B[0], B[1]), P(B[0], B[1] - th)].join(' ')
+      });
+    }
+    this.FWIN = [20, 80, 140, 200, 260, 320, 380];
+    // consolidação: 2 fileiras x 3 colunas x 2 camadas
+    const cols = ['#B5121B', '#F2B33D', '#EDEBE6', '#3A3F46', '#B5121B', '#7A0A10'];
+    this.STACK = [];
+    let k = 0;
+    for (let row = 0; row < 2; row++) for (let col = 2; col >= 0; col--) for (let lay = 0; lay < 2; lay++) {
+      this.STACK.push({ x: 140 + row * 208 + col * 86.6, y: 300 + row * 120 - col * 50 - lay * 100, c: cols[(k * 5 + row) % cols.length], order: k });
+      k++;
+    }
+    const order = this.STACK.map((b, i) => i);
+    this.STACK.forEach((b, i) => { b.order = i; });
+    // navio
+    const pal = ['#B5121B', '#F2B33D', '#EDEBE6', '#1D4ED8', '#2A9D8F', '#7A0A10', '#E8551E', '#3A3F46'];
+    this.SHIP = [];
+    for (let r = 0; r < 25; r++) {
+      if (r % 6 === 5) continue;
+      for (let c = 0; c < 4; c++) { if (rnd() < 0.06) continue; this.SHIP.push({ x: 54 + c * 49, y: 250 + r * 29, f: pal[Math.floor(rnd() * pal.length)] }); }
+    }
+    this.SHIPSH = this.SHIP.map((b) => ({ x: b.x + 6, y: b.y + 7 }));
+    this.WAVES = [];
+    for (let i = 0; i < 100; i++) {
+      const x = rnd() * 1500 - 30, y = rnd() * 1800 - 900, w = 20 + rnd() * 50;
+      this.WAVES.push({ d: 'M' + x.toFixed(0) + ' ' + y.toFixed(0) + ' q ' + (w / 2).toFixed(0) + ' -8 ' + w.toFixed(0) + ' 0', o: (0.1 + rnd() * 0.3).toFixed(2) });
+    }
+    this.CLOUDS = [];
+    for (let i = 0; i < 18; i++) {
+      this.CLOUDS.push({ x: rnd() * 110 - 20, y0: rnd() * 220, w: 260 + rnd() * 420, h: 150 + rnd() * 220, o: (0.6 + rnd() * 0.4).toFixed(2), sp: 0.7 + rnd() * 1.1, front: i % 6 === 0 });
+    }
+    this.BWIN = []; for (let r = 0; r < 2; r++) for (let c = 0; c < 5; c++) this.BWIN.push({ x: 20 + c * 80, y: 36 + r * 72 });
+    this.LANES = []; for (let i = 0; i < 30; i++) this.LANES.push(i);
+    this.ETAPAS = [
+      { n: '01', t: 'Busca de fornecedores', d: 'Pesquisa, comparação e negociação com fabricantes na China.' },
+      { n: '02', t: 'Visita às fábricas', d: 'Verificação presencial da fábrica, documentos e amostras.' },
+      { n: '03', t: 'Embarque', d: 'Consolidação, frete internacional, seguro e documentação.' },
+      { n: '04', t: 'Frete marítimo', d: 'Acompanhamento da carga até o porto de destino.' },
+      { n: '05', t: 'Frete aéreo', d: 'Para amostras, urgências e cargas de alto valor.' },
+      { n: '06', t: 'Desembaraço', d: 'Classificação fiscal, impostos e liberação aduaneira.' },
+      { n: '07', t: 'Entrega', d: 'A mercadoria chega na porta da sua empresa.' }
+    ];
+  }
+  componentDidMount() {
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    document.addEventListener('scroll', this.onScroll, true);
+    window.addEventListener('resize', this.onScroll);
+    setTimeout(() => {
+      this.update();
+      const se = document.scrollingElement || document.documentElement;
+      if (se && se.scrollHeight <= se.clientHeight + 40) this.startAuto();
+    }, 80);
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    document.removeEventListener('scroll', this.onScroll, true);
+    window.removeEventListener('resize', this.onScroll);
+    clearInterval(this.timer);
+  }
+  update() {
+    if (this.imm && this.immStick) {
+      const ri = this.imm.getBoundingClientRect();
+      const runI = ri.height - this.immStick.offsetHeight;
+      const q = runI > 0 ? (61 - ri.top + this.immStick.offsetHeight * 0.6) / (runI + this.immStick.offsetHeight * 0.6) : 1;
+      const se = document.scrollingElement || document.documentElement;
+      const nq = se && se.scrollHeight <= se.clientHeight + 40 ? 1 : Math.min(1, Math.max(0, q));
+      if (nq !== this.state.q) this.setState({ q: nq });
+    }
+    if (this.state.auto || !this.sec || !this.stick) { this.forceUpdate(); return; }
+    const r = this.sec.getBoundingClientRect();
+    const run = r.height - this.stick.offsetHeight;
+    const p = run > 0 ? (61 - r.top) / run : 0;
+    this.setState({ p: Math.min(1, Math.max(0, p)) });
+  }
+  startAuto() {
+    clearInterval(this.timer);
+    this.t = 0;
+    this.setState({ auto: true, p: 0 });
+    this.timer = setInterval(() => { this.t += 0.0011; if (this.t > 1.08) this.t = 0; this.setState({ p: Math.min(1, this.t) }); }, 30);
+  }
+  stopAuto() { clearInterval(this.timer); this.setState({ auto: false }); setTimeout(this.update, 0); }
+  seg(p, a, b) { return Math.min(1, Math.max(0, (p - a) / (b - a))); }
+  ease(t) { return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  eout(t) { return 1 - Math.pow(1 - t, 3); }
+  vis(p, a, b) { const f = 0.015; if (p < a - f || p > b + f) return 0; if (p < a) return (p - (a - f)) / f; if (p > b) return 1 - (p - b) / f; return 1; }
+  scr(text, t, fr) {
+    const G = 'ABCDEFGHJKLMNOPQRSTUVWXYZ0123456789/#%';
+    const n = text.length, k = Math.floor(t * (n + 6));
+    let out = '';
+    for (let i = 0; i < n; i++) {
+      const ch = text[i];
+      if (i < k - 6 || ch === ' ') out += ch;
+      else if (i < k) out += G[(i * 7 + fr * 3) % G.length];
+      else out += ' ';
+    }
+    return out;
+  }
+  renderVals() {
+    const p = this.state.p;
+    const fr = Math.floor(p * 900);
+    const W = typeof window !== 'undefined' ? window.innerWidth : 1440;
+    const t1 = this.seg(p, 0.06, 0.16), t2 = this.seg(p, 0.18, 0.30), t3 = this.seg(p, 0.32, 0.41);
+    const t4 = this.seg(p, 0.43, 0.56), ta = this.seg(p, 0.58, 0.70), t5 = this.seg(p, 0.72, 0.83), t6 = this.seg(p, 0.85, 0.97);
+    const scene = p < 0.17 ? 1 : p < 0.31 ? 2 : p < 0.42 ? 3 : p < 0.57 ? 4 : p < 0.71 ? 5 : p < 0.84 ? 6 : 7;
+    // aéreo
+    const cloudsAll = this.CLOUDS.map((c) => ({ x: c.x.toFixed(1), y: ((((c.y0 + ta * 320 * c.sp) % 220) + 220) % 220 - 70).toFixed(1), w: c.w.toFixed(0), h: c.h.toFixed(0), o: c.o, front: c.front }));
+    const cloudsBack = cloudsAll.filter((c) => !c.front);
+    const cloudsFront = cloudsAll.filter((c) => c.front).map((c) => ({ x: c.x, y: c.y, w: (c.w * 1.6).toFixed(0), h: (c.h * 1.4).toFixed(0), o: 0.85 }));
+    const pl = this.eout(this.seg(ta, 0, 0.7));
+
+    // 01 radar
+    const sweep = (p * 2600) % 360;
+    const finalIdx = this.FINAL.map((f) => f.i);
+    const dots = this.DOTS.map((d, i) => {
+      const fin = finalIdx.indexOf(i) >= 0;
+      const lit = t1 > d.k * 0.45;
+      const dim = !fin && t1 > 0.5 + d.k * 0.4;
+      let c = '#6E6A64', o = 0.5, halo = 0, ho = 0;
+      if (lit) { c = '#F2B33D'; o = 1; halo = 14; ho = 0.55; }
+      if (dim) { c = '#4A4642'; o = 0.5; halo = 0; ho = 0; }
+      if (fin && t1 > 0.82) { c = '#E2202B'; halo = 22; ho = 0.8; }
+      return { x: d.x.toFixed(1), y: d.y.toFixed(1), r: fin && t1 > 0.82 ? 9 : 6, c: c, o: o, halo: halo, ho: ho };
+    });
+    const finals = this.FINAL.map((f, j) => {
+      const d = this.DOTS[f.i];
+      const on = t1 > 0.84 + j * 0.03;
+      const approved = j === 1 && t1 > 0.96;
+      return { x: d.x.toFixed(1), y: d.y.toFixed(1), lx: (d.x + 36).toFixed(1), ly: (d.y + 9).toFixed(1), label: approved ? f.label + ' ✓' : f.label, c: approved ? '#F2B33D' : '#E2202B', o: on ? 1 : 0 };
+    });
+    const st = ['PESQUISA', 'TRIAGEM', 'NEGOCIAÇÃO'].map((t, i) => {
+      const on = t1 > i * 0.33;
+      return { t: t, b: on ? '#F2B33D' : '#4A4642', bg: on ? '#F2B33D' : 'transparent', fg: on ? '#0C0B0B' : '#8E8A83' };
+    });
+
+    // 02 fábrica
+    const checks = ['Visita presencial à fábrica', 'Documentos e licenças verificados', 'Amostras analisadas', 'Inspeção de qualidade'].map((t, i) => {
+      const on = t2 > 0.18 + i * 0.18;
+      return { t: t, o: on ? 1 : 0.35, bg: on ? '#B5121B' : 'transparent', tick: on ? 1 : 0 };
+    });
+    const smoke = [];
+    for (let i = 0; i < 10; i++) {
+      const ph = ((p * 6 + i / 10) % 1);
+      const base = i % 2 === 0 ? [470, -55] : [530, -0];
+      smoke.push({ x: (base[0] + ph * 60 + (i % 3) * 8).toFixed(1), y: (base[1] - ph * 220).toFixed(1), r: (14 + ph * 34).toFixed(1), o: (0.55 * (1 - ph)).toFixed(2) });
+    }
+    const scanX = 40 + this.ease(this.seg(t2, 0.05, 0.9)) * 640;
+
+    // 03 consolidação
+    const stack = this.STACK.map((b, i) => {
+      const tt = this.eout(this.seg(t3, i * 0.065, i * 0.065 + 0.22));
+      return { x: b.x.toFixed(1), y: (b.y - (1 - tt) * 900).toFixed(1), c: b.c, o: tt > 0 ? 1 : 0 };
+    });
+
+    // 04 oceano
+    const H = this.stick ? this.stick.offsetHeight : 860;
+    const shipW = Math.min(W * 0.2, 260);
+    const shipH = shipW * 1340 / 540;
+    const zoom = this.ease(this.seg(t4, 0.62, 1));
+    const shipY = H * 0.85 - this.seg(p, 0.42, 0.57) *(shipH * 0.7 + H * 0.4) * (1 - zoom * 0.3);
+    const km = Math.round(t4 * 20000);
+
+    // 05 docs
+    const docMeta = [
+      { kind: 'DOC 01', title: 'Commercial Invoice', l: 0, t: 6, r: -8 },
+      { kind: 'DOC 02', title: 'Packing List', l: 14, t: 0, r: -2 },
+      { kind: 'DOC 03', title: 'Bill of Lading', l: 28, t: 8, r: 5 },
+      { kind: 'DOC 04', title: 'Declaração de Importação', l: 42, t: 2, r: 10 }
+    ];
+    const docs = docMeta.map((d, i) => {
+      const tt = this.eout(this.seg(t5, i * 0.1, i * 0.1 + 0.3));
+      return { kind: d.kind, title: d.title, l: d.l, t: d.t, r: d.r, y: ((1 - tt) * 700).toFixed(0), o: tt > 0 ? 1 : 0 };
+    });
+    const sk = this.seg(t5, 0.62, 0.78);
+    const stampS = (2.6 - 1.6 * this.eout(sk)).toFixed(3);
+
+    // 06 entrega
+    const truckW = Math.min(W * 0.62, 760);
+    const bldW = Math.min(W * 0.34, 420);
+    const endX = W * 0.97 - bldW - truckW + bldW * 0.12;
+    const mv = this.eout(this.seg(t6, 0, 0.72));
+    const truckX = -truckW - 40 + mv * (endX + truckW + 40);
+    const wheelDeg = (truckX * 0.6) % 360;
+    const doorH = (130 * (1 - this.ease(this.seg(t6, 0.62, 0.86)))).toFixed(1);
+
+    // HUD
+    let hudLeft = 'CHINA · BUSCA';
+    if (scene === 2) hudLeft = 'CHINA · FÁBRICA';
+    if (scene === 3) hudLeft = 'PORTO DE ORIGEM';
+    if (scene === 4) hudLeft = '≈ ' + km.toLocaleString('pt-BR') + ' KM PELO MAR';
+    if (scene === 5) hudLeft = String(Math.round(780 + ta * 120)) + ' KM/H · ≈ ' + Math.round(ta * 18500).toLocaleString('pt-BR') + ' KM PELO AR';
+    if (scene === 6) hudLeft = 'ALFÂNDEGA · BRASIL';
+    if (scene === 7) hudLeft = String(Math.round((1 - this.ease(this.seg(t6, 0.35, 0.72))) * 60)).padStart(2, '0') + ' KM/H';
+    const light = scene === 2 || scene === 5 || scene === 7;
+    const hud = light ? '#0C0B0B' : '#FFFFFF';
+    const bar = ['Fornecedor', 'Fábrica', 'Embarque', 'Marítimo', 'Aéreo', 'Desembaraço', 'Entrega'].map((t, i) => {
+      const done = i + 1 < scene, cur = i + 1 === scene;
+      return { t: '0' + (i + 1) + ' ' + t.toUpperCase(), line: cur ? '#E2202B' : done ? (light ? '#0C0B0B' : '#F2B33D') : (light ? 'rgba(12,11,11,.2)' : 'rgba(255,255,255,.2)'), fg: cur || done ? hud : (light ? 'rgba(12,11,11,.62)' : 'rgba(255,255,255,.6)') };
+    });
+
+    // imersão
+    const q = this.state.q;
+    const fly = this.ease(this.seg(q, 0.15, 0.6));
+    let apx = 60, apy = 220, apr = 0, arcLen = 1000;
+    if (this.arc && this.arc.getTotalLength) {
+      arcLen = this.arc.getTotalLength();
+      const a = this.arc.getPointAtLength(fly * arcLen), b = this.arc.getPointAtLength(Math.min(arcLen, fly * arcLen + 2));
+      apx = a.x; apy = a.y; apr = Math.atan2(b.y - a.y, b.x - a.x) * 180 / Math.PI + 90;
+    }
+    const pass = this.eout(this.seg(q, 0.05, 0.4));
+    const immCards = this.IMMCARDS.map((c, i) => {
+      const tt = this.eout(this.seg(q, 0.45 + i * 0.1, 0.6 + i * 0.1));
+      const gold = i === 1;
+      return { n: c.n, t: c.t, d: c.d, rx: ((1 - tt) * -90).toFixed(1), o: tt > 0 ? Math.min(1, tt * 1.5).toFixed(2) : 0, bg: gold ? '#F2B33D' : (i === 2 ? '#B5121B' : '#F6F3EC'), fg: i === 2 ? '#FFFFFF' : '#0C0B0B' };
+    });
+
+    return {
+      setImm: (el) => { this.imm = el; }, setImmStick: (el) => { this.immStick = el; }, setArc: (el) => { this.arc = el; },
+      immTitle: this.scr('IMERSÃO NA CHINA.', this.seg(q, 0.02, 0.25), Math.floor(q * 600)),
+      immWordX: (200 - q * 1400).toFixed(0),
+      arcLen: arcLen.toFixed(1), arcOff: (arcLen * (1 - fly)).toFixed(1), arrO: fly > 0.98 ? 0.8 : 0,
+      apx: apx.toFixed(1), apy: apy.toFixed(1), apr: apr.toFixed(1),
+      passY: ((1 - pass) * 260).toFixed(1), passRX: (28 - pass * 20).toFixed(2), passRY: (-26 + pass * 14 + q * 6).toFixed(2), passRZ: (-6 + pass * 4).toFixed(2), passO: pass > 0 ? Math.min(1, pass * 2).toFixed(2) : 0,
+      immCards: immCards, immBars: this.IMMBARS,
+      immStatus: fly < 0.02 ? 'EMBARQUE · PORTÃO UP' : fly < 0.98 ? 'EM VOO · SÃO PAULO → GUANGZHOU' : 'POUSO CONFIRMADO · BEM-VINDO À CHINA',
+      immKm: '≈ ' + Math.round(fly * 18500).toLocaleString('pt-BR') + ' KM',
+      setSec: (el) => { this.sec = el; }, setStick: (el) => { this.stick = el; },
+      auto: this.state.auto, notAuto: !this.state.auto,
+      autoLabel: this.state.auto ? 'Pausar animação' : 'Reproduzir animação',
+      toggleAuto: () => { if (this.state.auto) this.stopAuto(); else this.startAuto(); },
+      hud: hud, hudLeft: hudLeft, sceneNum: '0' + scene, bar: bar,
+      c1: this.vis(p, 0, 0.17).toFixed(3), c2: this.vis(p, 0.17, 0.31).toFixed(3), c3: this.vis(p, 0.31, 0.42).toFixed(3),
+      c4: this.vis(p, 0.42, 0.57).toFixed(3), c5a: this.vis(p, 0.57, 0.71).toFixed(3), c5: this.vis(p, 0.71, 0.84).toFixed(3), c6: this.vis(p, 0.84, 1.3).toFixed(3),
+      cloudsBack: cloudsBack, cloudsFront: cloudsFront,
+      planeTop: (108 - pl * 62).toFixed(2), planeRot: (-14 + pl * 10).toFixed(2), planeS: (0.8 + pl * 0.2).toFixed(3),
+      airPct: (ta * 100).toFixed(1),
+      airTitle: this.scr('OU PELO AR, QUANDO O PRAZO APERTA.', this.seg(ta, 0.05, 0.35), fr),
+      heroOp: (1 - this.seg(p, 0.035, 0.065)).toFixed(3), heroY: (-this.seg(p, 0.035, 0.065) * 50).toFixed(1),
+      s1TextOp: this.seg(p, 0.065, 0.085).toFixed(3),
+      sweep: sweep.toFixed(1), dots: dots, finals: finals, s1steps: st,
+      s1Title: this.scr('ENCONTRAMOS O FORNECEDOR CERTO.', this.seg(t1, 0.05, 0.4), fr),
+      teeth: this.TEETH, fwin: this.FWIN, smoke: smoke, checks: checks,
+      scanX: scanX.toFixed(1), scanO: t2 > 0.02 && t2 < 0.95 ? 0.9 : 0, scanO2: t2 > 0.02 && t2 < 0.95 ? 0.35 : 0,
+      s2Title: this.scr('VAMOS ATÉ A FÁBRICA.', this.seg(t2, 0.02, 0.3), fr),
+      stack: stack, s3Title: this.scr('CONSOLIDAMOS E EMBARCAMOS.', this.seg(t3, 0.02, 0.35), fr),
+      waves: this.WAVES, waveY: (p * 4200 % 900).toFixed(0),
+      shipBoxes: this.SHIP, shipShadow: this.SHIPSH, shipY: shipY.toFixed(1), shipS: (1 - zoom * 0.5).toFixed(3),
+      seaPct: (t4 * 100).toFixed(1),
+      s4Title: this.scr('ATRAVESSAMOS O OCEANO COM VOCÊ.', this.seg(t4, 0.02, 0.3), fr),
+      docs: docs, stampS: stampS, stampO: sk > 0 ? Math.min(1, sk * 3).toFixed(2) : 0,
+      s5Title: this.scr('DESEMBARAÇO SEM DOR DE CABEÇA.', this.seg(t5, 0.02, 0.3), fr),
+      truckW: truckW.toFixed(0), bldW: bldW.toFixed(0), truckX: truckX.toFixed(1), wheelDeg: wheelDeg.toFixed(1), doorH: doorH,
+      bwin: this.BWIN, lanes: this.LANES,
+      s6Title: this.scr('ENTREGUE NA SUA EMPRESA.', this.seg(t6, 0.55, 0.85), fr),
+      ctaOp: this.seg(t6, 0.8, 0.9).toFixed(2),
+      etapas: this.ETAPAS
+    };
+  }
+}
+
+(function(){
+var comp=new Component({});var vals=comp.renderVals();var binds=[],refs=[],ifs=[];
+function res(p,sc){p=p.trim();if(p==='true')return true;if(p==='false')return false;if(/^-?\d/.test(p))return +p;var a=p.split('.'),h=a[0],v;
+ if(sc&&sc[h])v=sc[h]();else v=vals[h];for(var i=1;i<a.length;i++){if(v==null)return v;v=v[a[i]]}return v}
+var RE=/\{\{([^}]+)\}\}/g,WH=/^\s*\{\{([^}]+)\}\}\s*$/;
+function interp(t,sc){return t.replace(RE,function(m,p){var v=res(p,sc);return v==null?'':String(v)})}
+function procEl(el,sc){var at=Array.prototype.slice.call(el.attributes);at.forEach(function(a){var v=a.value;if(v.indexOf('{{')<0)return;var n=a.name,m=v.match(WH);
+ if(n==='ref'){refs.push({el:el,p:m[1],sc:sc});el.removeAttribute(n);return}
+ if(n.slice(0,2)==='on'){var path=m[1];el.addEventListener(n.slice(2).toLowerCase(),function(e){var f=res(path,sc);if(f)f(e)});el.removeAttribute(n);return}
+ binds.push({el:el,n:n,t:v,sc:sc,last:null})});walk(el,sc)}
+function walk(node,sc){Array.prototype.slice.call(node.childNodes).forEach(function(c){
+ if(c.nodeType===3){if(c.data.indexOf('{{')>=0)binds.push({node:c,t:c.data,sc:sc,last:null});return}
+ if(c.nodeType!==1)return;var tag=c.localName.toLowerCase();
+ if(tag==='sc-for'){var lp=c.getAttribute('list').match(WH)[1],as=c.getAttribute('as')||'item',list=res(lp,sc)||[];var parent=c.parentNode;
+  list.forEach(function(_,i){var s=Object.assign({},sc||{});s[as]=function(){var l=res(lp,sc);return l?l[i]:undefined};s['$index']=function(){return i};
+   Array.prototype.slice.call(c.childNodes).forEach(function(k){var cl=k.cloneNode(true);parent.insertBefore(cl,c);if(cl.nodeType===1)procOne(cl,s);else if(cl.nodeType===3&&cl.data.indexOf('{{')>=0)binds.push({node:cl,t:cl.data,sc:s,last:null})})});
+  parent.removeChild(c);return}
+ if(tag==='sc-if'){var vp=c.getAttribute('value').match(WH)[1],par=c.parentNode,els=[];
+  Array.prototype.slice.call(c.childNodes).forEach(function(k){var cl=k.cloneNode(true);par.insertBefore(cl,c);if(cl.nodeType===1){procOne(cl,sc);els.push(cl)}});par.removeChild(c);ifs.push({els:els,p:vp,sc:sc});return}
+ procEl(c,sc)})}
+function procOne(el,sc){var tag=el.localName.toLowerCase();if(tag==='sc-for'||tag==='sc-if'){var w=document.createElement('div');el.parentNode.insertBefore(w,el);w.appendChild(el);walk(w,sc);while(w.firstChild)w.parentNode.insertBefore(w.firstChild,w);w.parentNode.removeChild(w)}else procEl(el,sc)}
+var root=document.getElementById('app');root.appendChild(document.getElementById('tpl').content.cloneNode(true));walk(root,null);
+function apply(){vals=comp.renderVals();for(var i=0;i<binds.length;i++){var b=binds[i],v=interp(b.t,b.sc);if(v===b.last)continue;b.last=v;if(b.node)b.node.data=v;else b.el.setAttribute(b.n,v)}
+ ifs.forEach(function(f){var on=!!res(f.p,f.sc);f.els.forEach(function(e){e.style.display=on?'':'none'})})}
+var pend=false;window.__sched=function(){if(pend)return;pend=true;requestAnimationFrame(function(){pend=false;apply()})};
+apply();refs.forEach(function(r){var f=res(r.p,r.sc);if(f)f(r.el)});apply();if(comp.componentDidMount)comp.componentDidMount();
+})();
+</script>
+</body>
+</html>
