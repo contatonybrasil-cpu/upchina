@@ -1,0 +1,21 @@
+name: Ativar HTTPS do domínio
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+permissions:
+  pages: write
+  contents: read
+jobs:
+  https:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Domínio e HTTPS no GitHub Pages
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X PUT repos/${{ github.repository }}/pages -f cname=www.upchina.com.br || true
+          gh api repos/${{ github.repository }}/pages --jq '{cname, https_enforced, status, https_certificate: .https_certificate.state}' || true
+          gh api -X PUT repos/${{ github.repository }}/pages -F https_enforced=true && echo "HTTPS ATIVO" || echo "Certificado ainda não pronto, tenta de novo na próxima hora"
